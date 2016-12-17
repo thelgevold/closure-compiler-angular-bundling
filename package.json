@@ -8,6 +8,7 @@
     "@angular/compiler": "alexeagle/compiler-builds",
     "@angular/compiler-cli": "alexeagle/compiler-cli-builds",
     "@angular/core": "alexeagle/core-builds",
+    "@angular/forms": "alexeagle/forms-builds",
     "@angular/platform-browser": "alexeagle/platform-browser-builds",
     "@angular/platform-server": "alexeagle/platform-server-builds",
     "@angular/tsc-wrapped": "alexeagle/tsc-wrapped-builds",

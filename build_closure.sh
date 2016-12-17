@@ -12,11 +12,14 @@ OPTS=(
   "--js_module_root=vendor"
   node_modules/zone.js/dist/zone.js
   $(find vendor/rxjs -name *.js)
-  node_modules/@angular/{core,common,compiler,platform-browser}/index.js
-  $(find node_modules/@angular/{core,common,compiler,platform-browser}/src -name *.js)
+  node_modules/@angular/{core,common,compiler,platform-browser,forms}/index.js
+  $(find node_modules/@angular/{core,common,compiler,platform-browser,forms}/src -name *.js)
   built/node_modules/@angular/common/src/directives/*.js
+  built/node_modules/@angular/forms/src/directives/*.js
+  built/node_modules/@angular/forms/src/directives/reactive_directives/*.js
   "built/src/*.js"
   "built/src/treeview/*.js"
+  "built/src/dynamic-form/*.js"
 )
 set -ex
 java -jar node_modules/google-closure-compiler/compiler.jar $(echo ${OPTS[*]})
