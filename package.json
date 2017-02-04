@@ -5,6 +5,7 @@
   "main": "index.js",
   "devDependencies": {
     "@angular/common": "angular/common-builds#master-es2015",
+    "@angular/forms": "angular/forms-builds#master-es2015",
     "@angular/compiler": "angular/compiler-builds#master-es2015",
     "@angular/compiler-cli": "angular/compiler-cli-builds#master-es2015",
     "@angular/core": "angular/core-builds#master-es2015",

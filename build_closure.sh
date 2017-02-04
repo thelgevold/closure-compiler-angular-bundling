@@ -27,13 +27,14 @@ OPTS=(
   "vendor/zone_externs.js"
 
   $(find vendor/rxjs -name *.js)
-  node_modules/@angular/{core,common,compiler,platform-browser,router}/index.js
-  $(find node_modules/@angular/{core,common,compiler,platform-browser,router}/src -name *.js)
+  node_modules/@angular/{core,common,compiler,platform-browser,router,forms}/index.js
+  $(find node_modules/@angular/{core,common,compiler,platform-browser,router,forms}/src -name *.js)
 
-  built/node_modules/@angular/{common,router}/src/directives/*.js
+  built/node_modules/@angular/{common,router,forms}/src/directives/*.js
+  built/node_modules/@angular/forms/src/directives/reactive_directives/*.js
   
   "built/src/*.js"
-  built/src/components/{grid,treeview}/*.js
+  built/src/components/{grid,treeview,dynamic-form}/*.js
  
   # Trim files not imported (transitively) from bootstrap.js
   "--entry_point=./built/src/bootstrap"
