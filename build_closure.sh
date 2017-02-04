@@ -34,7 +34,7 @@ OPTS=(
   built/node_modules/@angular/forms/src/directives/reactive_directives/*.js
   
   "built/src/*.js"
-  built/src/components/{grid,treeview,dynamic-form}/*.js
+  built/src/components/{grid,treeview,dynamic-form,input-controls}/*.js
  
   # Trim files not imported (transitively) from bootstrap.js
   "--entry_point=./built/src/bootstrap"
