@@ -272,6 +272,7 @@ node_modules/@angular/forms/src/directives.js
 node_modules/@angular/forms/src/form_providers.js
 node_modules/@angular/forms/src/forms.js
 node_modules/@angular/forms/index.js
+built/node_modules/@angular/common/src/directives/ng_class.ngfactory.js
 built/node_modules/@angular/common/src/directives/ng_for_of.ngfactory.js
 built/node_modules/@angular/common/src/directives/ng_if.ngfactory.js
 built/node_modules/@angular/common/src/directives/ng_switch.ngfactory.js
@@ -305,6 +306,8 @@ built/src/components/dynamic-form/survey-demo.js
 built/src/components/dynamic-form/index.js
 built/src/components/input-controls/input-controls.js
 built/src/components/two-way-binding/name.js
+built/src/components/insertion-sort/insertion-sort.js
+built/src/components/insertion-sort/numbers.js
 built/src/app.routes.js
 built/src/app.module.js
 built/src/components/grid/grid.ngfactory.js
@@ -315,6 +318,7 @@ built/src/components/treeview/treeview-demo.ngfactory.js
 built/src/components/dynamic-form/survey.ngfactory.js
 built/src/components/dynamic-form/survey-demo.ngfactory.js
 built/src/components/input-controls/input-controls.ngfactory.js
+built/src/components/insertion-sort/numbers.ngfactory.js
 built/src/components/two-way-binding/name.ngfactory.js
 built/src/app.module.ngfactory.js
 built/src/bootstrap.js

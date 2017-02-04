@@ -9,6 +9,7 @@ import {Treeview, TreeviewDemo} from './components/treeview';
 import {Survey, SurveyDemo} from './components/dynamic-form';
 import {InputControls} from './components/input-controls/input-controls';
 import {Name} from './components/two-way-binding/name';
+import {Numbers} from './components/insertion-sort/numbers';
 
 import {routing} from './app.routes';
 
@@ -17,7 +18,8 @@ import {routing} from './app.routes';
                  Treeview, TreeviewDemo,
                  Survey, SurveyDemo, 
                  InputControls,
-                 Name
+                 Name,
+                 Numbers
                  ],
   bootstrap: [Basic],
   imports: [BrowserModule, 
