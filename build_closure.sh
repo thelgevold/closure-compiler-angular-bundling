@@ -27,10 +27,12 @@ OPTS=(
   "vendor/zone_externs.js"
 
   $(find vendor/rxjs -name *.js)
-  node_modules/@angular/{core,common,compiler,platform-browser}/index.js
-  $(find node_modules/@angular/{core,common,compiler,platform-browser}/src -name *.js)
+  node_modules/@angular/{core,common,compiler,platform-browser,router}/index.js
+  $(find node_modules/@angular/{core,common,compiler,platform-browser,router}/src -name *.js)
+  
   "built/node_modules/@angular/common/src/directives/*.js"
-  "built/node_modules/@angular/common/src/directives/*.js"
+  "built/node_modules/@angular/router/src/directives/*.js"
+  
   "built/src/*.js"
 
   "built/src/components/grid/*.js"

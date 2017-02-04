@@ -8,6 +8,7 @@
     "@angular/compiler": "angular/compiler-builds#master-es2015",
     "@angular/compiler-cli": "angular/compiler-cli-builds#master-es2015",
     "@angular/core": "angular/core-builds#master-es2015",
+    "@angular/router": "angular/router-builds#master-es2015",
     "@angular/platform-browser": "angular/platform-browser-builds#master-es2015",
     "@angular/platform-server": "angular/platform-server-builds#master-es2015",
     "@angular/tsc-wrapped": "angular/tsc-wrapped-builds#master-es2015",
