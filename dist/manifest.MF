@@ -176,6 +176,7 @@ node_modules/@angular/platform-browser/src/version.js
 node_modules/@angular/platform-browser/src/platform-browser.js
 node_modules/@angular/platform-browser/index.js
 built/node_modules/@angular/common/src/directives/ng_for_of.ngfactory.js
+built/node_modules/@angular/common/src/directives/ng_if.ngfactory.js
 built/src/Basic.js
 built/src/components/grid/column.js
 built/src/components/grid/grid-demo.js
@@ -183,7 +184,14 @@ built/src/components/grid/sorter.js
 built/src/components/grid/grid.js
 built/src/components/grid/grid.ngfactory.js
 built/src/components/grid/grid-demo.ngfactory.js
+built/src/components/treeview/directory.js
+built/src/components/treeview/treeview-demo.js
+built/src/components/treeview/treeview.js
+built/src/components/treeview/treeview.css.shim.ngstyle.js
+built/src/components/treeview/treeview.ngfactory.js
+built/src/components/treeview/treeview-demo.ngfactory.js
 built/src/Basic.ngfactory.js
+built/src/components/treeview/index.js
 built/src/app.module.js
 built/src/app.module.ngfactory.js
 built/src/bootstrap.js

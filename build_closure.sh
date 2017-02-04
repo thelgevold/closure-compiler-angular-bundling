@@ -32,7 +32,9 @@ OPTS=(
   "built/node_modules/@angular/common/src/directives/*.js"
   "built/node_modules/@angular/common/src/directives/*.js"
   "built/src/*.js"
+
   "built/src/components/grid/*.js"
+  "built/src/components/treeview/*.js"
 
   # Trim files not imported (transitively) from bootstrap.js
   "--entry_point=./built/src/bootstrap"
