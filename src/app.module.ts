@@ -8,6 +8,7 @@ import {Grid} from './components/grid/grid';
 import {Treeview, TreeviewDemo} from './components/treeview';
 import {Survey, SurveyDemo} from './components/dynamic-form';
 import {InputControls} from './components/input-controls/input-controls';
+import {Name} from './components/two-way-binding/name';
 
 import {routing} from './app.routes';
 
@@ -15,7 +16,8 @@ import {routing} from './app.routes';
   declarations: [Basic, GridDemo, Grid, 
                  Treeview, TreeviewDemo,
                  Survey, SurveyDemo, 
-                 InputControls
+                 InputControls,
+                 Name
                  ],
   bootstrap: [Basic],
   imports: [BrowserModule, 
