@@ -29,10 +29,13 @@ OPTS=(
   $(find vendor/rxjs -name *.js)
   node_modules/@angular/{core,common,compiler,platform-browser}/index.js
   $(find node_modules/@angular/{core,common,compiler,platform-browser}/src -name *.js)
-  "built/*.js"
+  "built/node_modules/@angular/common/src/directives/*.js"
+  "built/node_modules/@angular/common/src/directives/*.js"
+  "built/src/*.js"
+  "built/src/components/grid/*.js"
 
   # Trim files not imported (transitively) from bootstrap.js
-  "--entry_point=./built/bootstrap"
+  "--entry_point=./built/src/bootstrap"
   "--dependency_mode=STRICT"
   "--output_manifest=dist/manifest.MF"
 )

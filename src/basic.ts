@@ -8,5 +8,6 @@ import {Component, Injectable} from '@angular/core/index';
 @Injectable()
 export class Basic {
   ctxProp: string;
+  numbers = [1,2,3,4];
   constructor() { this.ctxProp = 'initial value'; }
 }
