@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {Basic} from './Basic';
+import {Demo} from './demo';
 
 import {GridDemo} from './components/grid/grid-demo';
 import {Grid} from './components/grid/grid';
@@ -14,14 +14,14 @@ import {Numbers} from './components/insertion-sort/numbers';
 import {routing} from './app.routes';
 
 @NgModule({
-  declarations: [Basic, GridDemo, Grid, 
+  declarations: [Demo, GridDemo, Grid, 
                  Treeview, TreeviewDemo,
                  Survey, SurveyDemo, 
                  InputControls,
                  Name,
                  Numbers
                  ],
-  bootstrap: [Basic],
+  bootstrap: [Demo],
   imports: [BrowserModule, 
             routing, 
             FormsModule,

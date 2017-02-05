@@ -287,8 +287,7 @@ built/node_modules/@angular/forms/src/directives/select_control_value_accessor.n
 built/node_modules/@angular/forms/src/directives/select_multiple_control_value_accessor.ngfactory.js
 built/node_modules/@angular/forms/src/directives/reactive_directives/form_control_name.ngfactory.js
 built/node_modules/@angular/forms/src/directives/reactive_directives/form_group_directive.ngfactory.js
-built/src/Basic.js
-built/src/Basic.ngfactory.js
+built/src/demo.js
 built/src/components/grid/column.js
 built/src/components/grid/grid-demo.js
 built/src/components/grid/sorter.js
@@ -319,5 +318,6 @@ built/src/components/dynamic-form/survey-demo.ngfactory.js
 built/src/components/input-controls/input-controls.ngfactory.js
 built/src/components/insertion-sort/numbers.ngfactory.js
 built/src/components/two-way-binding/name.ngfactory.js
+built/src/demo.ngfactory.js
 built/src/app.module.ngfactory.js
 built/src/bootstrap.js
