@@ -64,10 +64,9 @@ import {Component} from '@angular/core';
 })
 
 export class InputControls {
-
-    gender:string;
-    javascript = false;
-    angular = false;
-    csharp = false;
-    name = 'Two way bound';
+  gender:string;
+  javascript = false;
+  angular = false;
+  csharp = false;
+  name = 'Two way bound';
 }

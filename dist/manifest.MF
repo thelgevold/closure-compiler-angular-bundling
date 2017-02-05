@@ -312,7 +312,6 @@ built/src/app.routes.js
 built/src/app.module.js
 built/src/components/grid/grid.ngfactory.js
 built/src/components/grid/grid-demo.ngfactory.js
-built/src/components/treeview/treeview.css.shim.ngstyle.js
 built/src/components/treeview/treeview.ngfactory.js
 built/src/components/treeview/treeview-demo.ngfactory.js
 built/src/components/dynamic-form/survey.ngfactory.js

@@ -4,8 +4,7 @@ import {Directory} from './directory';
 
 @Component({
   selector: 'treeview',
-  templateUrl: './treeview.html',
-  styleUrls: ['treeview.css']
+  templateUrl: './treeview.html'
 })
 
 export class Treeview {

@@ -16,7 +16,6 @@ export class TreeviewDemo {
   }
 
   loadDirectories(){
-
     const fall2014 = new Directory('Fall 2014',[],['image1.jpg','image2.jpg','image3.jpg']);
     const summer2014 = new Directory('Summer 2014',[],['image10.jpg','image20.jpg','image30.jpg']);
     const pics = new Directory('Pictures',[summer2014,fall2014],[]);

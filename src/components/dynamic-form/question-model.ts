@@ -7,14 +7,14 @@ export class QuestionModel{
     let group:any = {};
 
     this.questions.forEach((question) => {
-        if(question.required){
-            group[question.key] = new FormControl('', Validators.required);
-        }
-        else{
-            group[question.key] = new FormControl('');
-        }
+      if(question.required){
+          group[question.key] = new FormControl('', Validators.required);
+      }
+      else{
+          group[question.key] = new FormControl('');
+      }
     });
 
     return new FormGroup(group);
-}
+  }
 }

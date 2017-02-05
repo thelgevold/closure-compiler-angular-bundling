@@ -6,6 +6,6 @@ export class DropDownQuestion extends QuestionBase<string>{
   controlType = 'dropdown';
 
   constructor(){
-      super();
+    super();
   }
 }
