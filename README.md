@@ -1,7 +1,4 @@
-This repo is a proof-of-concept for bunding an Angular application with Google Closure Compiler.
-It contains a minimal Hello World application with a single component.
-
-**The current compressed JS size for an Angular Hello World app is 28kb.**
+This is version of the Closure fork with a highly modifed version of the original flat ESM Angular bundles.
 
 ```
 ++ ls -alH dist/bundle.js dist/bundle.js.brotli dist/bundle.js.gz dist/bundle.js.map
