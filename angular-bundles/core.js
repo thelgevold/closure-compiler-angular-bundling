@@ -4,8 +4,9 @@
  * License: MIT
  */
 import { Observable } from 'rxjs/Observable';
-import { merge } from 'rxjs/observable/merge';
-import { share } from 'rxjs/operator/share';
+
+// import { merge } from 'rxjs/observable/merge';
+// import { share } from 'rxjs/operator/share';
 import { Subject } from 'rxjs/Subject';
 
 /**
@@ -520,7 +521,7 @@ const ANALYZE_FOR_ENTRY_COMPONENTS = new InjectionToken('AnalyzeForEntryComponen
  * \@stable
  * \@Annotation
  */
-const Attribute = makeParamDecorator('Attribute', [['attributeName', undefined]]);
+const Attribute = {};
 /**
  * Base class for query metadata.
  *
@@ -629,51 +630,21 @@ function isDefaultChangeDetectionStrategy(changeDetectionStrategy) {
  * \@stable
  * \@Annotation
  */
-const Directive = makeDecorator('Directive', {
-    selector: undefined,
-    inputs: undefined,
-    outputs: undefined,
-    host: undefined,
-    providers: undefined,
-    exportAs: undefined,
-    queries: undefined
-});
+const Directive = {};
 /**
  * Component decorator and metadata.
  *
  * \@stable
  * \@Annotation
  */
-const Component = makeDecorator('Component', {
-    selector: undefined,
-    inputs: undefined,
-    outputs: undefined,
-    host: undefined,
-    exportAs: undefined,
-    moduleId: undefined,
-    providers: undefined,
-    viewProviders: undefined,
-    changeDetection: ChangeDetectionStrategy.Default,
-    queries: undefined,
-    templateUrl: undefined,
-    template: undefined,
-    styleUrls: undefined,
-    styles: undefined,
-    animations: undefined,
-    encapsulation: undefined,
-    interpolation: undefined,
-    entryComponents: undefined
-}, Directive);
+const Component = {};
 /**
  * Pipe decorator and metadata.
  *
  * \@stable
  * \@Annotation
  */
-const Pipe = makeDecorator('Pipe', {
-    name: undefined,
-    pure: true,
-});
+const Pipe = {};
 /**
  * Input decorator and metadata.
  *
@@ -735,16 +706,7 @@ const NO_ERRORS_SCHEMA = {
  * \@stable
  * \@Annotation
  */
-const NgModule = makeDecorator('NgModule', {
-    providers: undefined,
-    declarations: undefined,
-    imports: undefined,
-    exports: undefined,
-    entryComponents: undefined,
-    bootstrap: undefined,
-    schemas: undefined,
-    id: undefined,
-});
+const NgModule = {};
 
 let ViewEncapsulation = {};
 ViewEncapsulation.Emulated = 0;
@@ -844,42 +806,42 @@ const VERSION = new Version('4.0.0');
  * \@stable
  * \@Annotation
  */
-const Inject = makeParamDecorator('Inject', [['token', undefined]]);
+const Inject = {};//makeParamDecorator('Inject', [['token', undefined]]);
 /**
  * Optional decorator and metadata.
  *
  * \@stable
  * \@Annotation
  */
-const Optional = makeParamDecorator('Optional', []);
+const Optional = {};//makeParamDecorator('Optional', []);
 /**
  * Injectable decorator and metadata.
  *
  * \@stable
  * \@Annotation
  */
-const Injectable = makeDecorator('Injectable', []);
+const Injectable = {};
 /**
  * Self decorator and metadata.
  *
  * \@stable
  * \@Annotation
  */
-const Self = makeParamDecorator('Self', []);
+const Self = {};//makeParamDecorator('Self', []);
 /**
  * SkipSelf decorator and metadata.
  *
  * \@stable
  * \@Annotation
  */
-const SkipSelf = makeParamDecorator('SkipSelf', []);
+const SkipSelf = {};//makeParamDecorator('SkipSelf', []);
 /**
  * Host decorator and metadata.
  *
  * \@stable
  * \@Annotation
  */
-const Host = makeParamDecorator('Host', []);
+const Host = {};//makeParamDecorator('Host', []);
 
 /**
  * @license
@@ -1570,9 +1532,9 @@ class ReflectionCapabilities {
         // This also helps to work around for https://github.com/Microsoft/TypeScript/issues/12439
         // that sets 'design:paramtypes' to []
         // if a class inherits from another class but has no ctor declared itself.
-        if (DELEGATE_CTOR.exec(type.toString())) {
-            return null;
-        }
+        // if (DELEGATE_CTOR.exec(type.toString())) {
+        //     return null;
+        // }
         // Prefer the direct API.
         if (((type)).parameters && ((type)).parameters !== parentCtor.parameters) {
             return ((type)).parameters;
@@ -2166,9 +2128,9 @@ function _dependenciesFor(typeOrFunc) {
     const /** @type {?} */ params = reflector.parameters(typeOrFunc);
     if (!params)
         return [];
-    if (params.some(p => p == null)) {
-        throw noAnnotationError(typeOrFunc, params);
-    }
+    // if (params.some(p => p == null)) {
+    //     throw noAnnotationError(typeOrFunc, params);
+    // }
     return params.map(p => _extractToken(typeOrFunc, p, params));
 }
 /**
@@ -2194,15 +2156,15 @@ function _extractToken(typeOrFunc, metadata, params) {
         if (paramMetadata instanceof Type) {
             token = paramMetadata;
         }
-        else if (paramMetadata instanceof Inject) {
-            token = paramMetadata['token'];
-        }
-        else if (paramMetadata instanceof Optional) {
-            optional = true;
-        }
-        else if (paramMetadata instanceof Self || paramMetadata instanceof SkipSelf) {
-            visibility = paramMetadata;
-        }
+        // else if (paramMetadata instanceof Inject) {
+        //     token = paramMetadata['token'];
+        // }
+        // else if (paramMetadata instanceof Optional) {
+        //     optional = true;
+        // }
+        // else if (paramMetadata instanceof Self || paramMetadata instanceof SkipSelf) {
+        //     visibility = paramMetadata;
+        // }
         else if (paramMetadata instanceof InjectionToken) {
             token = paramMetadata;
         }
@@ -2211,9 +2173,9 @@ function _extractToken(typeOrFunc, metadata, params) {
     if (token != null) {
         return _createDependency(token, optional, visibility);
     }
-    else {
-        throw noAnnotationError(typeOrFunc, params);
-    }
+    // else {
+    //     throw noAnnotationError(typeOrFunc, params);
+    // }
 }
 /**
  * @param {?} token
@@ -2592,9 +2554,10 @@ class ReflectiveInjector_ {
      * @return {?}
      */
     _new(provider) {
-        if (this._constructionCounter++ > this._getMaxNumberOfObjects()) {
-            throw cyclicDependencyError(this, provider.key);
-        }
+        // TGH: Removal
+        // if (this._constructionCounter++ > this._getMaxNumberOfObjects()) {
+        //     throw cyclicDependencyError(this, provider.key);
+        // }
         return this._instantiateProvider(provider);
     }
     /**
@@ -2640,7 +2603,7 @@ class ReflectiveInjector_ {
             obj = factory(...deps);
         }
         catch (e) {
-            throw instantiationError(this, e, e.stack, provider.key);
+            throw new Error(e);//instantiationError(this, e, e.stack, provider.key);
         }
         return obj;
     }
@@ -2661,12 +2624,13 @@ class ReflectiveInjector_ {
         if (key === INJECTOR_KEY) {
             return this;
         }
-        if (visibility instanceof Self) {
-            return this._getByKeySelf(key, notFoundValue);
-        }
-        else {
-            return this._getByKeyDefault(key, notFoundValue, visibility);
-        }
+        // TGH: Removal
+        // if (visibility instanceof Self) {
+        //     return this._getByKeySelf(key, notFoundValue);
+        // }
+        // else {
+        return this._getByKeyDefault(key, notFoundValue, visibility);
+        //}
     }
     /**
      * @param {?} keyId
@@ -2693,9 +2657,9 @@ class ReflectiveInjector_ {
         if (notFoundValue !== THROW_IF_NOT_FOUND) {
             return notFoundValue;
         }
-        else {
-            throw noProviderError(this, key);
-        }
+        // else {
+        //     throw noProviderError(this, key);
+        // }
     }
     /**
      * \@internal
@@ -2872,7 +2836,7 @@ ApplicationInitStatus.decorators = [
  * @nocollapse
  */
 ApplicationInitStatus.ctorParameters = () => [
-    { type: Array, decorators: [{ type: Inject, args: [APP_INITIALIZER,] }, { type: Optional },] },
+    { type: Array, decorators: [{ type: Inject, args: [/*APP_INITIALIZER*/] }, /*{ type: Optional }*/,] },
 ];
 
 /**
@@ -3412,7 +3376,7 @@ class NgModuleInjector {
         this._destroyed = false;
         this.bootstrapFactories =
             bootstrapFactories.map(f => new ComponentFactoryBoundToModule(f, this));
-        this._cmpFactoryResolver = new CodegenComponentFactoryResolver(factories, parent.get(ComponentFactoryResolver, ComponentFactoryResolver.NULL), this);
+        //this._cmpFactoryResolver = new CodegenComponentFactoryResolver(factories, parent.get(ComponentFactoryResolver, ComponentFactoryResolver.NULL), this);
     }
     /**
      * @return {?}
@@ -3543,7 +3507,7 @@ function endTimeRange(range) {
 /**
  * True if WTF is enabled.
  */
-const wtfEnabled = detectWTF();
+const wtfEnabled = false;//detectWTF();
 /**
  * @param {?=} arg0
  * @param {?=} arg1
@@ -3690,37 +3654,37 @@ class EventEmitter extends Subject {
      * @param {?=} complete
      * @return {?}
      */
-    subscribe(generatorOrNext, error, complete) {
-        let /** @type {?} */ schedulerFn;
-        let /** @type {?} */ errorFn = (err) => null;
-        let /** @type {?} */ completeFn = () => null;
-        if (generatorOrNext && typeof generatorOrNext === 'object') {
-            schedulerFn = this.__isAsync ? (value) => {
-                setTimeout(() => generatorOrNext.next(value));
-            } : (value) => { generatorOrNext.next(value); };
-            if (generatorOrNext.error) {
-                errorFn = this.__isAsync ? (err) => { setTimeout(() => generatorOrNext.error(err)); } :
-                    (err) => { generatorOrNext.error(err); };
-            }
-            if (generatorOrNext.complete) {
-                completeFn = this.__isAsync ? () => { setTimeout(() => generatorOrNext.complete()); } :
-                    () => { generatorOrNext.complete(); };
-            }
-        }
-        else {
-            schedulerFn = this.__isAsync ? (value) => { setTimeout(() => generatorOrNext(value)); } :
-                (value) => { generatorOrNext(value); };
-            if (error) {
-                errorFn =
-                    this.__isAsync ? (err) => { setTimeout(() => error(err)); } : (err) => { error(err); };
-            }
-            if (complete) {
-                completeFn =
-                    this.__isAsync ? () => { setTimeout(() => complete()); } : () => { complete(); };
-            }
-        }
-        return super.subscribe(schedulerFn, errorFn, completeFn);
-    }
+    // subscribe(generatorOrNext, error, complete) {
+    //     let /** @type {?} */ schedulerFn;
+    //     let /** @type {?} */ errorFn = (err) => null;
+    //     let /** @type {?} */ completeFn = () => null;
+    //     if (generatorOrNext && typeof generatorOrNext === 'object') {
+    //         schedulerFn = this.__isAsync ? (value) => {
+    //             setTimeout(() => generatorOrNext.next(value));
+    //         } : (value) => { generatorOrNext.next(value); };
+    //         if (generatorOrNext.error) {
+    //             errorFn = this.__isAsync ? (err) => { setTimeout(() => generatorOrNext.error(err)); } :
+    //                 (err) => { generatorOrNext.error(err); };
+    //         }
+    //         if (generatorOrNext.complete) {
+    //             completeFn = this.__isAsync ? () => { setTimeout(() => generatorOrNext.complete()); } :
+    //                 () => { generatorOrNext.complete(); };
+    //         }
+    //     }
+    //     else {
+    //         schedulerFn = this.__isAsync ? (value) => { setTimeout(() => generatorOrNext(value)); } :
+    //             (value) => { generatorOrNext(value); };
+    //         if (error) {
+    //             errorFn =
+    //                 this.__isAsync ? (err) => { setTimeout(() => error(err)); } : (err) => { error(err); };
+    //         }
+    //         if (complete) {
+    //             completeFn =
+    //                 this.__isAsync ? () => { setTimeout(() => complete()); } : () => { complete(); };
+    //         }
+    //     }
+    //     return super.subscribe(schedulerFn, errorFn, completeFn);
+    // }
 }
 
 /**
@@ -4317,10 +4281,10 @@ class NgProbeToken {
  * @return {?}
  */
 function createPlatform(injector) {
-    if (_platform && !_platform.destroyed &&
-        !_platform.injector.get(ALLOW_MULTIPLE_PLATFORMS, false)) {
-        throw new Error('There can be only one platform. Destroy the previous one to create a new one.');
-    }
+    // if (_platform && !_platform.destroyed &&
+    //     !_platform.injector.get(ALLOW_MULTIPLE_PLATFORMS, false)) {
+    //     throw new Error('There can be only one platform. Destroy the previous one to create a new one.');
+    // }
     _platform = injector.get(PlatformRef);
     const /** @type {?} */ inits = injector.get(PLATFORM_INITIALIZER, null);
     if (inits)
@@ -4340,7 +4304,7 @@ function createPlatformFactory(parentPlatformFactory, name, providers = []) {
     const /** @type {?} */ marker = new InjectionToken(`Platform: ${name}`);
     return (extraProviders = []) => {
         let /** @type {?} */ platform = getPlatform();
-        if (!platform || platform.injector.get(ALLOW_MULTIPLE_PLATFORMS, false)) {
+        if (!platform) {
             if (parentPlatformFactory) {
                 parentPlatformFactory(providers.concat(extraProviders).concat({ provide: marker, useValue: true }));
             }
@@ -4557,25 +4521,27 @@ class PlatformRef_ extends PlatformRef {
         // So we create a mini parent injector that just contains the new NgZone and
         // pass that as parent to the NgModuleFactory.
         if (!ngZone)
-            ngZone = new NgZone({ enableLongStackTrace: isDevMode() });
+            ngZone = new NgZone({ enableLongStackTrace: false });
         // Attention: Don't use ApplicationRef.run here,
         // as we want to be sure that all possible constructor calls are inside `ngZone.run`!
         return ngZone.run(() => {
             const /** @type {?} */ ngZoneInjector = ReflectiveInjector.resolveAndCreate([{ provide: NgZone, useValue: ngZone }], this.injector);
             const /** @type {?} */ moduleRef = (moduleFactory.create(ngZoneInjector));
-            const /** @type {?} */ exceptionHandler = moduleRef.injector.get(ErrorHandler, null);
-            if (!exceptionHandler) {
-                throw new Error('No ErrorHandler. Is platform module (BrowserModule) included?');
-            }
-            moduleRef.onDestroy(() => remove(this._modules, moduleRef));
+            //const /** @type {?} */ exceptionHandler = moduleRef.injector.get(ErrorHandler, null);
+            // if (!exceptionHandler) {
+            //     throw new Error('No ErrorHandler. Is platform module (BrowserModule) included?');
+            // }
+            //moduleRef.onDestroy(() => remove(this._modules, moduleRef));
             ngZone.onError.subscribe({ next: (error) => { exceptionHandler.handleError(error); } });
-            return _callAndReportToErrorHandler(exceptionHandler, () => {
-                const /** @type {?} */ initStatus = moduleRef.injector.get(ApplicationInitStatus);
-                return initStatus.donePromise.then(() => {
-                    this._moduleDoBootstrap(moduleRef);
-                    return moduleRef;
-                });
-            });
+            // return _callAndReportToErrorHandler(exceptionHandler, () => {
+            //     const /** @type {?} */ initStatus = moduleRef.injector.get(ApplicationInitStatus);
+            //     return initStatus.donePromise.then(() => {
+            //         this._moduleDoBootstrap(moduleRef);
+            //         return moduleRef;
+            //     });
+            // });
+            this._moduleDoBootstrap(moduleRef);
+            return moduleRef;
         });
     }
     /**
@@ -4737,7 +4703,7 @@ class ApplicationRef_ extends ApplicationRef {
         this._runningTick = false;
         this._enforceNoNewChanges = false;
         this._stable = true;
-        this._enforceNoNewChanges = isDevMode();
+        this._enforceNoNewChanges = false;
         this._zone.onMicrotaskEmpty.subscribe({ next: () => { this._zone.run(() => { this.tick(); }); } });
         const isCurrentlyStable = new Observable((observer) => {
             this._stable = this._zone.isStable && !this._zone.hasPendingMacrotasks &&
@@ -4772,7 +4738,8 @@ class ApplicationRef_ extends ApplicationRef {
                 unstableSub.unsubscribe();
             };
         });
-        this._isStable = merge(isCurrentlyStable, share.call(isStable));
+        // TGH: Removal
+        //this._isStable = merge(isCurrentlyStable, share.call(isStable));
     }
     /**
      * @param {?} viewRef
@@ -4806,7 +4773,7 @@ class ApplicationRef_ extends ApplicationRef {
             componentFactory = componentOrFactory;
         }
         else {
-            componentFactory = this._componentFactoryResolver.resolveComponentFactory(componentOrFactory);
+            //componentFactory = this._componentFactoryResolver.resolveComponentFactory(componentOrFactory);
         }
         this._rootComponentTypes.push(componentFactory.componentType);
         // Create a factory associated with the current module if it's not bound to some other
@@ -4815,15 +4782,16 @@ class ApplicationRef_ extends ApplicationRef {
             this._injector.get(NgModuleRef);
         const /** @type {?} */ compRef = componentFactory.create(Injector.NULL, [], componentFactory.selector, ngModule);
         compRef.onDestroy(() => { this._unloadComponent(compRef); });
-        const /** @type {?} */ testability = compRef.injector.get(Testability, null);
-        if (testability) {
-            compRef.injector.get(TestabilityRegistry)
-                .registerApplication(compRef.location.nativeElement, testability);
-        }
+        // const /** @type {?} */ testability = compRef.injector.get(Testability, null);
+        // TGH: Removal
+        // if (testability) {
+        //     compRef.injector.get(TestabilityRegistry)
+        //         .registerApplication(compRef.location.nativeElement, testability);
+        // }
         this._loadComponent(compRef);
-        if (isDevMode()) {
-            this._console.log(`Angular is running in the development mode. Call enableProdMode() to enable the production mode.`);
-        }
+        // if (isDevMode()) {
+        //     this._console.log(`Angular is running in the development mode. Call enableProdMode() to enable the production mode.`);
+        // }
         return compRef;
     }
     /**
@@ -4835,8 +4803,8 @@ class ApplicationRef_ extends ApplicationRef {
         this.tick();
         this._rootComponents.push(componentRef);
         // Get the listeners lazily to prevent DI cycles.
-        const /** @type {?} */ listeners = this._injector.get(APP_BOOTSTRAP_LISTENER, []).concat(this._bootstrapListeners);
-        listeners.forEach((listener) => listener(componentRef));
+        //const /** @type {?} */ listeners = this._injector.get(APP_BOOTSTRAP_LISTENER, []).concat(this._bootstrapListeners);
+        //listeners.forEach((listener) => listener(componentRef));
     }
     /**
      * @param {?} componentRef
@@ -4902,9 +4870,9 @@ ApplicationRef_.decorators = [
  */
 ApplicationRef_.ctorParameters = () => [
     { type: NgZone, },
-    { type: Console, },
+  //  { type: Console, },
     { type: Injector, },
-    { type: ErrorHandler, },
+   // { type: ErrorHandler, },
     { type: ComponentFactoryResolver, },
     { type: ApplicationInitStatus, },
 ];
@@ -5184,11 +5152,11 @@ class RendererFactory2 {
      */
     createRenderer(hostElement, type) { }
 }
-let RendererStyleFlags2 = {};
-RendererStyleFlags2.Important = 1;
-RendererStyleFlags2.DashCase = 2;
-RendererStyleFlags2[RendererStyleFlags2.Important] = "Important";
-RendererStyleFlags2[RendererStyleFlags2.DashCase] = "DashCase";
+// let RendererStyleFlags2 = {};
+// RendererStyleFlags2.Important = 1;
+// RendererStyleFlags2.DashCase = 2;
+// RendererStyleFlags2[RendererStyleFlags2.Important] = "Important";
+// RendererStyleFlags2[RendererStyleFlags2.DashCase] = "DashCase";
 /**
  * \@experimental
  * @abstract
@@ -5603,10 +5571,10 @@ class SystemJsNgModuleLoader {
      * @param {?} path
      * @return {?}
      */
-    load(path) {
-        const /** @type {?} */ offlineMode = this._compiler instanceof Compiler;
-        return offlineMode ? this.loadFactory(path) : this.loadAndCompile(path);
-    }
+    // load(path) {
+    //     const /** @type {?} */ offlineMode = this._compiler instanceof Compiler;
+    //     return offlineMode ? this.loadFactory(path) : this.loadAndCompile(path);
+    // }
     /**
      * @param {?} path
      * @return {?}
@@ -5644,8 +5612,8 @@ SystemJsNgModuleLoader.decorators = [
  * @nocollapse
  */
 SystemJsNgModuleLoader.ctorParameters = () => [
-    { type: Compiler, },
-    { type: SystemJsNgModuleLoaderConfig, decorators: [{ type: Optional },] },
+   // { type: Compiler, },
+    { type: SystemJsNgModuleLoaderConfig, decorators: [/*{ type: Optional }*/,] },
 ];
 /**
  * @param {?} value
@@ -7948,7 +7916,7 @@ class KeyValueDiffers {
             const /** @type {?} */ copied = parent.factories.slice();
             factories = factories.concat(copied);
         }
-        return new KeyValueDiffers(factories);
+        //return new KeyValueDiffers(factories);
     }
     /**
      * Takes an array of {\@link KeyValueDifferFactory} and returns a provider used to extend the
@@ -7974,17 +7942,17 @@ class KeyValueDiffers {
      */
     static extend(factories) {
         return {
-            provide: KeyValueDiffers,
+            //provide: KeyValueDiffers,
             useFactory: (parent) => {
                 if (!parent) {
                     // Typically would occur when calling KeyValueDiffers.extend inside of dependencies passed
                     // to bootstrap(), which would override default pipes instead of extending them.
                     throw new Error('Cannot extend KeyValueDiffers without a parent injector');
                 }
-                return KeyValueDiffers.create(factories, parent);
+               // return KeyValueDiffers.create(factories, parent);
             },
             // Dependency technically isn't optional, but we can provide a better error message this way.
-            deps: [[KeyValueDiffers, new SkipSelf(), new Optional()]]
+          //  deps: [[KeyValueDiffers, new SkipSelf(), new Optional()]]
         };
     }
     /**
@@ -8014,9 +7982,10 @@ const keyValDiff = [new DefaultKeyValueDifferFactory()];
 /**
  * Structural diffing for `Iterable` types such as `Array`s.
  */
-const iterableDiff = [new DefaultIterableDifferFactory()];
-const defaultIterableDiffers = new IterableDiffers(iterableDiff);
-const defaultKeyValueDiffers = new KeyValueDiffers(keyValDiff);
+// TGH: Removal
+//const iterableDiff = [new DefaultIterableDifferFactory()];
+//const defaultIterableDiffers = new IterableDiffers(iterableDiff);
+//const defaultKeyValueDiffers;//new KeyValueDiffers(keyValDiff);
 
 /**
  * @license
@@ -8051,8 +8020,9 @@ const _CORE_PLATFORM_PROVIDERS = [
     { provide: PlatformRef, useExisting: PlatformRef_ },
     { provide: Reflector, useFactory: _reflector, deps: [] },
     { provide: ReflectorReader, useExisting: Reflector },
-    TestabilityRegistry,
-    Console,
+    // TGH: Removal
+    // TestabilityRegistry,
+    //Console,
 ];
 /**
  * This platform has to be included in any other platform
@@ -8088,19 +8058,19 @@ MissingTranslationStrategy[MissingTranslationStrategy.Error] = "Error";
 MissingTranslationStrategy[MissingTranslationStrategy.Warning] = "Warning";
 MissingTranslationStrategy[MissingTranslationStrategy.Ignore] = "Ignore";
 
-let SecurityContext = {};
-SecurityContext.NONE = 0;
-SecurityContext.HTML = 1;
-SecurityContext.STYLE = 2;
-SecurityContext.SCRIPT = 3;
-SecurityContext.URL = 4;
-SecurityContext.RESOURCE_URL = 5;
-SecurityContext[SecurityContext.NONE] = "NONE";
-SecurityContext[SecurityContext.HTML] = "HTML";
-SecurityContext[SecurityContext.STYLE] = "STYLE";
-SecurityContext[SecurityContext.SCRIPT] = "SCRIPT";
-SecurityContext[SecurityContext.URL] = "URL";
-SecurityContext[SecurityContext.RESOURCE_URL] = "RESOURCE_URL";
+// let SecurityContext = {};
+// SecurityContext.NONE = 0;
+// SecurityContext.HTML = 1;
+// SecurityContext.STYLE = 2;
+// SecurityContext.SCRIPT = 3;
+// SecurityContext.URL = 4;
+// SecurityContext.RESOURCE_URL = 5;
+// SecurityContext[SecurityContext.NONE] = "NONE";
+// SecurityContext[SecurityContext.HTML] = "HTML";
+// SecurityContext[SecurityContext.STYLE] = "STYLE";
+// SecurityContext[SecurityContext.SCRIPT] = "SCRIPT";
+// SecurityContext[SecurityContext.URL] = "URL";
+// SecurityContext[SecurityContext.RESOURCE_URL] = "RESOURCE_URL";
 /**
  * Sanitizer is used by the views to sanitize potentially dangerous values.
  *
@@ -8442,7 +8412,7 @@ function checkAndUpdateBinding(view, def, bindingIdx, value) {
  */
 function checkBindingNoChanges(view, def, bindingIdx, value) {
     const /** @type {?} */ oldValue = view.oldValues[def.bindingIndex + bindingIdx];
-    if ((view.state & 1 /* FirstCheck */) || !devModeEqual(oldValue, value)) {
+    if ((view.state & 1 /* FirstCheck */) ) {
         throw expressionChangedAfterItHasBeenCheckedError(Services.createDebugContext(view, def.index), oldValue, value, (view.state & 1 /* FirstCheck */) !== 0);
     }
 }
@@ -8636,7 +8606,7 @@ function visitSiblingRenderNodes(view, action, startIndex, endIndex, parentNode,
     for (let /** @type {?} */ i = startIndex; i <= endIndex; i++) {
         const /** @type {?} */ nodeDef = view.def.nodes[i];
         if (nodeDef.flags & (1 /* TypeElement */ | 2 /* TypeText */ | 4 /* TypeNgContent */)) {
-            visitRenderNode(view, nodeDef, action, parentNode, nextSibling, target);
+            //visitRenderNode(view, nodeDef, action, parentNode, nextSibling, target);
         }
         // jump to next sibling
         i += nodeDef.childCount;
@@ -8663,7 +8633,7 @@ function visitProjectedRenderNodes(view, ngContentIndex, action, parentNode, nex
     for (let /** @type {?} */ i = startIndex; i <= endIndex; i++) {
         const /** @type {?} */ nodeDef = hostView.def.nodes[i];
         if (nodeDef.ngContentIndex === ngContentIndex) {
-            visitRenderNode(hostView, nodeDef, action, parentNode, nextSibling, target);
+            //visitRenderNode(hostView, nodeDef, action, parentNode, nextSibling, target);
         }
         // jump to next sibling
         i += nodeDef.childCount;
@@ -9193,7 +9163,7 @@ function setElementClass(view, renderNode$$1, name, value) {
  * @return {?}
  */
 function setElementStyle(view, binding, renderNode$$1, name, value) {
-    let /** @type {?} */ renderValue = view.root.sanitizer.sanitize(SecurityContext.STYLE, value);
+    let /** @type {?} */ renderValue = value;//view.root.sanitizer.sanitize(SecurityContext.STYLE, value);
     if (renderValue != null) {
         renderValue = renderValue.toString();
         const /** @type {?} */ unit = binding.suffix;
@@ -9310,7 +9280,7 @@ function attachEmbeddedView(parentView, elementData, viewIndex, view) {
         }
         projectedViews.push(view);
     }
-    Services.dirtyParentQueries(view);
+    //Services.dirtyParentQueries(view);
     const /** @type {?} */ prevView = viewIndex > 0 ? embeddedViews[viewIndex - 1] : null;
     renderAttachEmbeddedView(elementData, prevView, view);
 }
@@ -9335,7 +9305,7 @@ function detachEmbeddedView(elementData, viewIndex) {
         const /** @type {?} */ projectedViews = dvcElementData.template._projectedViews;
         removeFromArray(projectedViews, projectedViews.indexOf(view));
     }
-    Services.dirtyParentQueries(view);
+    //Services.dirtyParentQueries(view);
     renderDetachView(view);
     return view;
 }
@@ -9355,7 +9325,7 @@ function moveEmbeddedView(elementData, oldViewIndex, newViewIndex) {
     addToArray(embeddedViews, newViewIndex, view);
     // Note: Don't need to change projectedViews as the order in there
     // as always invalid...
-    Services.dirtyParentQueries(view);
+   // Services.dirtyParentQueries(view);
     renderDetachView(view);
     const /** @type {?} */ prevView = newViewIndex > 0 ? embeddedViews[newViewIndex - 1] : null;
     renderAttachEmbeddedView(elementData, prevView, view);
@@ -9518,7 +9488,7 @@ class ComponentRef_ extends ComponentRef {
      * @return {?}
      */
     get location() {
-        return new ElementRef(asElementData(this._view, this._elDef.index).renderElement);
+        //return new ElementRef(asElementData(this._view, this._elDef.index).renderElement);
     }
     /**
      * @return {?}
@@ -9779,7 +9749,7 @@ class ViewRef_ {
     detachFromAppRef() {
         this._appRef = null;
         renderDetachView(this._view);
-        Services.dirtyParentQueries(this._view);
+       // Services.dirtyParentQueries(this._view);
     }
     /**
      * @param {?} appRef
@@ -9830,9 +9800,9 @@ class TemplateRef_ extends TemplateRef {
     /**
      * @return {?}
      */
-    get elementRef() {
-        return new ElementRef(asElementData(this._parentView, this._def.index).renderElement);
-    }
+    // get elementRef() {
+    //     return new ElementRef(asElementData(this._parentView, this._def.index).renderElement);
+    // }
 }
 /**
  * @param {?} view
@@ -10092,7 +10062,8 @@ class RendererAdapter {
  */
 const RendererV1TokenKey = tokenKey(Renderer);
 const Renderer2TokenKey = tokenKey(Renderer2);
-const ElementRefTokenKey = tokenKey(ElementRef);
+// TGH: Removal
+// const ElementRefTokenKey = tokenKey(ElementRef);
 const ViewContainerRefTokenKey = tokenKey(ViewContainerRef);
 const TemplateRefTokenKey = tokenKey(TemplateRef);
 const ChangeDetectorRefTokenKey = tokenKey(ChangeDetectorRef);
@@ -10502,30 +10473,30 @@ function resolveDep(view, elDef, allowPrivateServices, depDef, notFoundValue = I
     while (view) {
         if (elDef) {
             switch (tokenKey$$1) {
-                case RendererV1TokenKey: {
-                    const /** @type {?} */ compView = findCompView(view, elDef, allowPrivateServices);
-                    return createRendererV1(compView);
-                }
-                case Renderer2TokenKey: {
-                    const /** @type {?} */ compView = findCompView(view, elDef, allowPrivateServices);
-                    return compView.renderer;
-                }
-                case ElementRefTokenKey:
-                    return new ElementRef(asElementData(view, elDef.index).renderElement);
-                case ViewContainerRefTokenKey:
-                    return asElementData(view, elDef.index).viewContainer;
-                case TemplateRefTokenKey: {
-                    if (elDef.element.template) {
-                        return asElementData(view, elDef.index).template;
-                    }
-                    break;
-                }
-                case ChangeDetectorRefTokenKey: {
-                    let /** @type {?} */ cdView = findCompView(view, elDef, allowPrivateServices);
-                    return createChangeDetectorRef(cdView);
-                }
-                case InjectorRefTokenKey:
-                    return createInjector(view, elDef);
+                // case RendererV1TokenKey: {
+                //     const /** @type {?} */ compView = findCompView(view, elDef, allowPrivateServices);
+                //     return createRendererV1(compView);
+                // }
+                // case Renderer2TokenKey: {
+                //     const /** @type {?} */ compView = findCompView(view, elDef, allowPrivateServices);
+                //     return compView.renderer;
+                // }
+                //case ElementRefTokenKey:
+                  //  return new ElementRef(asElementData(view, elDef.index).renderElement);
+                // case ViewContainerRefTokenKey:
+                //     return asElementData(view, elDef.index).viewContainer;
+                // case TemplateRefTokenKey: {
+                //     if (elDef.element.template) {
+                //         return asElementData(view, elDef.index).template;
+                //     }
+                //     break;
+                // }
+                // case ChangeDetectorRefTokenKey: {
+                //     let /** @type {?} */ cdView = findCompView(view, elDef, allowPrivateServices);
+                //     return createChangeDetectorRef(cdView);
+                // }
+                // case InjectorRefTokenKey:
+                //     return createInjector(view, elDef);
                 default:
                     const /** @type {?} */ providerDef = (allowPrivateServices ? elDef.element.allProviders :
                         elDef.element.publicProviders)[tokenKey$$1];
@@ -10595,16 +10566,16 @@ function updateProp(view, providerData, def, bindingIdx, value, changes) {
     // the user passed in the property name as an object has to `providerDef`,
     // so Closure Compiler will have renamed the property correctly already.
     providerData.instance[propName] = value;
-    if (def.flags & 262144 /* OnChanges */) {
-        changes = changes || {};
-        let /** @type {?} */ oldValue = view.oldValues[def.bindingIndex + bindingIdx];
-        if (oldValue instanceof WrappedValue) {
-            oldValue = oldValue.wrapped;
-        }
-        const /** @type {?} */ binding = def.bindings[bindingIdx];
-        changes[binding.nonMinifiedName] =
-            new SimpleChange(oldValue, value, (view.state & 1 /* FirstCheck */) !== 0);
-    }
+    // if (def.flags & 262144 /* OnChanges */) {
+    //     changes = changes || {};
+    //     let /** @type {?} */ oldValue = view.oldValues[def.bindingIndex + bindingIdx];
+    //     if (oldValue instanceof WrappedValue) {
+    //         oldValue = oldValue.wrapped;
+    //     }
+    //     const /** @type {?} */ binding = def.bindings[bindingIdx];
+    //     changes[binding.nonMinifiedName] =
+    //         new SimpleChange(oldValue, value, (view.state & 1 /* FirstCheck */) !== 0);
+    // }
     view.oldValues[def.bindingIndex + bindingIdx] = value;
     return changes;
 }
@@ -11036,15 +11007,15 @@ function checkAndUpdateQuery(view, nodeDef) {
     }
     let /** @type {?} */ directiveInstance;
     let /** @type {?} */ newValues;
-    if (nodeDef.flags & 33554432 /* TypeContentQuery */) {
-        const /** @type {?} */ elementDef = nodeDef.parent.parent;
-        newValues = calcQueryValues(view, elementDef.index, elementDef.index + elementDef.childCount, nodeDef.query, []);
-        directiveInstance = asProviderData(view, nodeDef.parent.index).instance;
-    }
-    else if (nodeDef.flags & 67108864 /* TypeViewQuery */) {
-        newValues = calcQueryValues(view, 0, view.def.nodes.length - 1, nodeDef.query, []);
-        directiveInstance = view.component;
-    }
+    // if (nodeDef.flags & 33554432 /* TypeContentQuery */) {
+    //     const /** @type {?} */ elementDef = nodeDef.parent.parent;
+    //     newValues = calcQueryValues(view, elementDef.index, elementDef.index + elementDef.childCount, nodeDef.query, []);
+    //     directiveInstance = asProviderData(view, nodeDef.parent.index).instance;
+    // }
+    // else if (nodeDef.flags & 67108864 /* TypeViewQuery */) {
+    //     newValues = calcQueryValues(view, 0, view.def.nodes.length - 1, nodeDef.query, []);
+    //     directiveInstance = view.component;
+    // }
     queryList.reset(newValues);
     const /** @type {?} */ bindings = nodeDef.query.bindings;
     let /** @type {?} */ notify = false;
@@ -11124,9 +11095,10 @@ function getQueryValue(view, nodeDef, queryValueType) {
             case 1 /* RenderElement */:
                 value = asElementData(view, nodeDef.index).renderElement;
                 break;
-            case 0 /* ElementRef */:
-                value = new ElementRef(asElementData(view, nodeDef.index).renderElement);
-                break;
+            // TGH: Removal
+            // case 0 /* ElementRef */:
+            //     value = new ElementRef(asElementData(view, nodeDef.index).renderElement);
+            //     break;
             case 2 /* TemplateRef */:
                 value = asElementData(view, nodeDef.index).template;
                 break;
@@ -11368,7 +11340,7 @@ function viewDef(flags, nodes, updateDirectives, updateRenderer) {
             currentElementHasPublicProviders = false;
             currentElementHasPrivateProviders = false;
         }
-        validateNode(currentParent, node, nodes.length);
+        //validateNode(currentParent, node, nodes.length);
         viewNodeFlags |= node.flags;
         viewMatchedQueries |= node.matchedQueryIds;
         if (node.element && node.element.template) {
@@ -11576,11 +11548,13 @@ function createViewNodes(view) {
                     renderElement: el,
                     componentView,
                     viewContainer: undefined,
-                    template: nodeDef.element.template ? createTemplateData(view, nodeDef) : undefined
+                    // TGH: Removal
+                    //template: nodeDef.element.template ? createTemplateData(view, nodeDef) : undefined
                 });
-                if (nodeDef.flags & 8388608 /* EmbeddedViews */) {
-                    nodeData.viewContainer = createViewContainerData(view, nodeDef, nodeData);
-                }
+                // TGH: Removal
+                // if (nodeDef.flags & 8388608 /* EmbeddedViews */) {
+                //     nodeData.viewContainer = createViewContainerData(view, nodeDef, nodeData);
+                // }
                 break;
             case 2 /* TypeText */:
                 nodeData = (createText(view, renderHost, nodeDef));
@@ -11593,11 +11567,12 @@ function createViewNodes(view) {
                 nodeData = ({ instance });
                 break;
             }
-            case 8 /* TypePipe */: {
-                const /** @type {?} */ instance = createPipeInstance(view, nodeDef);
-                nodeData = ({ instance });
-                break;
-            }
+            // TGH: Removal
+            // case 8 /* TypePipe */: {
+            //     const /** @type {?} */ instance = createPipeInstance(view, nodeDef);
+            //     nodeData = ({ instance });
+            //     break;
+            // }
             case 8192 /* TypeDirective */: {
                 const /** @type {?} */ instance = createDirectiveInstance(view, nodeDef);
                 nodeData = ({ instance });
@@ -11612,15 +11587,16 @@ function createViewNodes(view) {
             case 64 /* TypePurePipe */:
                 nodeData = (createPureExpression(view, nodeDef));
                 break;
-            case 33554432 /* TypeContentQuery */:
-            case 67108864 /* TypeViewQuery */:
-                nodeData = (createQuery());
-                break;
-            case 4 /* TypeNgContent */:
-                appendNgContent(view, renderHost, nodeDef);
-                // no runtime data needed for NgContent...
-                nodeData = undefined;
-                break;
+            // TGH: Removal    
+            // case 33554432 /* TypeContentQuery */:
+            // case 67108864 /* TypeViewQuery */:
+            //     nodeData = (createQuery());
+            //     break;
+            // case 4 /* TypeNgContent */:
+            //     appendNgContent(view, renderHost, nodeDef);
+            //     // no runtime data needed for NgContent...
+            //     nodeData = undefined;
+            //     break;
         }
         nodes[i] = nodeData;
     }
@@ -11628,7 +11604,7 @@ function createViewNodes(view) {
     // so that e.g. ng-content works
     execComponentViewsAction(view, ViewAction.CreateViewNodes);
     // fill static content and view queries
-    execQueriesAction(view, 33554432 /* TypeContentQuery */ | 67108864 /* TypeViewQuery */, 134217728 /* StaticQuery */, 0 /* CheckAndUpdate */);
+    //execQueriesAction(view, 33554432 /* TypeContentQuery */ | 67108864 /* TypeViewQuery */, 134217728 /* StaticQuery */, 0 /* CheckAndUpdate */);
 }
 /**
  * @param {?} view
@@ -11636,7 +11612,7 @@ function createViewNodes(view) {
  */
 function checkNoChangesView(view) {
     Services.updateDirectives(view, 1 /* CheckNoChanges */);
-    execEmbeddedViewsAction(view, ViewAction.CheckNoChanges);
+   // execEmbeddedViewsAction(view, ViewAction.CheckNoChanges);
     Services.updateRenderer(view, 1 /* CheckNoChanges */);
     execComponentViewsAction(view, ViewAction.CheckNoChanges);
     // Note: We don't check queries for changes as we didn't do this in v2.x.
@@ -11648,15 +11624,15 @@ function checkNoChangesView(view) {
  */
 function checkAndUpdateView(view) {
     Services.updateDirectives(view, 0 /* CheckAndUpdate */);
-    execEmbeddedViewsAction(view, ViewAction.CheckAndUpdate);
-    execQueriesAction(view, 33554432 /* TypeContentQuery */, 268435456 /* DynamicQuery */, 0 /* CheckAndUpdate */);
-    callLifecycleHooksChildrenFirst(view, 1048576 /* AfterContentChecked */ |
-        (view.state & 1 /* FirstCheck */ ? 524288 /* AfterContentInit */ : 0));
+  //  execEmbeddedViewsAction(view, ViewAction.CheckAndUpdate);
+    //execQueriesAction(view, 33554432 /* TypeContentQuery */, 268435456 /* DynamicQuery */, 0 /* CheckAndUpdate */);
+    //callLifecycleHooksChildrenFirst(view, 1048576 /* AfterContentChecked */ |
+     //   (view.state & 1 /* FirstCheck */ ? 524288 /* AfterContentInit */ : 0));
     Services.updateRenderer(view, 0 /* CheckAndUpdate */);
     execComponentViewsAction(view, ViewAction.CheckAndUpdate);
-    execQueriesAction(view, 67108864 /* TypeViewQuery */, 268435456 /* DynamicQuery */, 0 /* CheckAndUpdate */);
-    callLifecycleHooksChildrenFirst(view, 4194304 /* AfterViewChecked */ |
-        (view.state & 1 /* FirstCheck */ ? 2097152 /* AfterViewInit */ : 0));
+    //execQueriesAction(view, 67108864 /* TypeViewQuery */, 268435456 /* DynamicQuery */, 0 /* CheckAndUpdate */);
+    //callLifecycleHooksChildrenFirst(view, 4194304 /* AfterViewChecked */ |
+       // (view.state & 1 /* FirstCheck */ ? 2097152 /* AfterViewInit */ : 0));
     if (view.def.flags & 2 /* OnPush */) {
         view.state &= ~2 /* ChecksEnabled */;
     }
@@ -11682,9 +11658,9 @@ function checkAndUpdateNode(view, nodeDef, argStyle, v0, v1, v2, v3, v4, v5, v6,
     if (argStyle === 0 /* Inline */) {
         return checkAndUpdateNodeInline(view, nodeDef, v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
     }
-    else {
-        return checkAndUpdateNodeDynamic(view, nodeDef, v0);
-    }
+    // else {
+    //     return checkAndUpdateNodeDynamic(view, nodeDef, v0);
+    // }
 }
 /**
  * @param {?} view
@@ -11710,16 +11686,16 @@ function checkAndUpdateNodeInline(view, nodeDef, v0, v1, v2, v3, v4, v5, v6, v7,
         case 2 /* TypeText */:
             changed = checkAndUpdateTextInline(view, nodeDef, v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
             break;
-        case 8192 /* TypeDirective */:
-            changed =
-                checkAndUpdateDirectiveInline(view, nodeDef, v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
-            break;
+        // case 8192 /* TypeDirective */:
+        //     changed =
+        //         checkAndUpdateDirectiveInline(view, nodeDef, v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
+        //     break;
         case 16 /* TypePureArray */:
         case 32 /* TypePureObject */:
-        case 64 /* TypePurePipe */:
-            changed =
-                checkAndUpdatePureExpressionInline(view, nodeDef, v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
-            break;
+        // case 64 /* TypePurePipe */:
+        //     changed =
+        //         checkAndUpdatePureExpressionInline(view, nodeDef, v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
+        //     break;
     }
     return changed;
 }
@@ -11853,9 +11829,9 @@ function destroyView(view) {
     if (view.state & 8 /* Destroyed */) {
         return;
     }
-    execEmbeddedViewsAction(view, ViewAction.Destroy);
+   // execEmbeddedViewsAction(view, ViewAction.Destroy);
     execComponentViewsAction(view, ViewAction.Destroy);
-    callLifecycleHooksChildrenFirst(view, 65536 /* OnDestroy */);
+    //callLifecycleHooksChildrenFirst(view, 65536 /* OnDestroy */);
     if (view.disposables) {
         for (let /** @type {?} */ i = 0; i < view.disposables.length; i++) {
             view.disposables[i]();
@@ -12021,8 +11997,8 @@ function initServicesIfNeeded() {
     if (initialized) {
         return;
     }
-    initialized = true;
-    const /** @type {?} */ services = isDevMode() ? createDebugServices() : createProdServices();
+    initialized = true;               
+    const /** @type {?} */ services = /*isDevMode() ? createDebugServices() :*/ createProdServices();
     Services.setCurrentNode = services.setCurrentNode;
     Services.createRootView = services.createRootView;
     Services.createEmbeddedView = services.createEmbeddedView;
@@ -12043,11 +12019,13 @@ function createProdServices() {
     return {
         setCurrentNode: () => { },
         createRootView: createProdRootView,
-        createEmbeddedView: createEmbeddedView,
+        // TGH: Removal
+        // createEmbeddedView: createEmbeddedView,
         checkAndUpdateView: checkAndUpdateView,
         checkNoChangesView: checkNoChangesView,
         destroyView: destroyView,
-        createDebugContext: (view, nodeIndex) => new DebugContext_(view, nodeIndex),
+        // TGH: Removal
+        //createDebugContext: (view, nodeIndex) => new DebugContext_(view, nodeIndex),
         handleEvent: (view, nodeIndex, eventName, event) => view.def.handleEvent(view, nodeIndex, eventName, event),
         updateDirectives: (view, checkType) => view.def.updateDirectives(checkType === 0 /* CheckAndUpdate */ ? prodCheckAndUpdateNode :
             prodCheckNoChangesNode, view),
@@ -12888,7 +12866,7 @@ function _iterableDiffersFactory() {
  * @return {?}
  */
 function _keyValueDiffersFactory() {
-    return defaultKeyValueDiffers;
+    //return defaultKeyValueDiffers;
 }
 /**
  * @param {?=} locale
@@ -12921,16 +12899,17 @@ ApplicationModule.decorators = [
                     ApplicationRef_,
                     { provide: ApplicationRef, useExisting: ApplicationRef_ },
                     ApplicationInitStatus,
-                    Compiler,
-                    APP_ID_RANDOM_PROVIDER,
-                    { provide: IterableDiffers, useFactory: _iterableDiffersFactory },
-                    { provide: KeyValueDiffers, useFactory: _keyValueDiffersFactory },
-                    {
-                        provide: LOCALE_ID,
-                        useFactory: _localeFactory,
-                        deps: [[new Inject(LOCALE_ID), new Optional(), new SkipSelf()]]
-                    },
-                    { provide: APP_INITIALIZER, useValue: _initViewEngine, multi: true },
+                    //Compiler,
+                    //APP_ID_RANDOM_PROVIDER,
+                    // TGH: Removal
+                    // { provide: IterableDiffers, useFactory: _iterableDiffersFactory },
+                    //{ provide: KeyValueDiffers, useFactory: _keyValueDiffersFactory },
+                    // {
+                    //     provide: LOCALE_ID,
+                    //     useFactory: _localeFactory,
+                    //     deps: [[new Inject(LOCALE_ID), new Optional(), new SkipSelf()]]
+                    // },
+                    //{ provide: APP_INITIALIZER, useValue: _initViewEngine, multi: true },
                 ]
             },] },
 ];
@@ -13549,5 +13528,5 @@ function transition$$1(stateChangeExpr, steps) {
  * Generated bundle index. Do not edit.
  */
 
-export { Class, createPlatform, assertPlatform, destroyPlatform, getPlatform, PlatformRef, ApplicationRef, enableProdMode, isDevMode, createPlatformFactory, NgProbeToken, APP_ID, PACKAGE_ROOT_URL, PLATFORM_INITIALIZER, PLATFORM_ID, APP_BOOTSTRAP_LISTENER, APP_INITIALIZER, ApplicationInitStatus, DebugElement, DebugNode, asNativeElements, getDebugNode, Testability, TestabilityRegistry, setTestabilityGetter, TRANSLATIONS, TRANSLATIONS_FORMAT, LOCALE_ID, MissingTranslationStrategy, ApplicationModule, wtfCreateScope, wtfLeave, wtfStartTimeRange, wtfEndTimeRange, Type, EventEmitter, ErrorHandler, Sanitizer, SecurityContext, ANALYZE_FOR_ENTRY_COMPONENTS, Attribute, ContentChild, ContentChildren, Query, ViewChild, ViewChildren, Component, Directive, HostBinding, HostListener, Input, Output, Pipe, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule, ViewEncapsulation, Version, VERSION, forwardRef, resolveForwardRef, Injector, ReflectiveInjector, ResolvedReflectiveFactory, ReflectiveKey, InjectionToken, OpaqueToken, Inject, Optional, Injectable, Self, SkipSelf, Host, NgZone, RenderComponentType, Renderer, Renderer2, RendererFactory2, RendererStyleFlags2, RootRenderer, COMPILER_OPTIONS, Compiler, CompilerFactory, ModuleWithComponentFactories, ComponentFactory, ComponentRef, ComponentFactoryResolver, ElementRef, NgModuleFactory, NgModuleRef, NgModuleFactoryLoader, getModuleFactory, QueryList, SystemJsNgModuleLoader, SystemJsNgModuleLoaderConfig, TemplateRef, ViewContainerRef, EmbeddedViewRef, ViewRef, ChangeDetectionStrategy, ChangeDetectorRef, DefaultIterableDiffer, IterableDiffers, KeyValueDiffers, SimpleChange, WrappedValue, platformCore, ALLOW_MULTIPLE_PLATFORMS as ɵALLOW_MULTIPLE_PLATFORMS, APP_ID_RANDOM_PROVIDER as ɵAPP_ID_RANDOM_PROVIDER, ValueUnwrapper as ɵValueUnwrapper, devModeEqual as ɵdevModeEqual, isListLikeIterable as ɵisListLikeIterable, ChangeDetectorStatus as ɵChangeDetectorStatus, isDefaultChangeDetectionStrategy as ɵisDefaultChangeDetectionStrategy, Console as ɵConsole, ERROR_COMPONENT_TYPE as ɵERROR_COMPONENT_TYPE, ComponentFactory as ɵComponentFactory, CodegenComponentFactoryResolver as ɵCodegenComponentFactoryResolver, LIFECYCLE_HOOKS_VALUES as ɵLIFECYCLE_HOOKS_VALUES, LifecycleHooks as ɵLifecycleHooks, ViewMetadata as ɵViewMetadata, Reflector as ɵReflector, reflector as ɵreflector, ReflectionCapabilities as ɵReflectionCapabilities, ReflectorReader as ɵReflectorReader, RenderDebugInfo as ɵRenderDebugInfo, _global as ɵglobal, looseIdentical as ɵlooseIdentical, stringify as ɵstringify, makeDecorator as ɵmakeDecorator, isObservable as ɵisObservable, isPromise as ɵisPromise, merge$1 as ɵmerge, NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR as ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR, NgModuleInjector as ɵNgModuleInjector, registerModuleFactory as ɵregisterModuleFactory, EMPTY_ARRAY as ɵEMPTY_ARRAY, EMPTY_MAP as ɵEMPTY_MAP, anchorDef as ɵand, createComponentFactory as ɵccf, createRendererType2 as ɵcrt, directiveDef as ɵdid, elementDef as ɵeld, elementEventFullName as ɵelementEventFullName, getComponentViewDefinitionFactory as ɵgetComponentViewDefinitionFactory, inlineInterpolate as ɵinlineInterpolate, interpolate as ɵinterpolate, ngContentDef as ɵncd, nodeValue as ɵnov, pipeDef as ɵpid, providerDef as ɵprd, pureArrayDef as ɵpad, pureObjectDef as ɵpod, purePipeDef as ɵppd, queryDef as ɵqud, textDef as ɵted, unwrapValue as ɵunv, viewDef as ɵvid, AUTO_STYLE$$1 as AUTO_STYLE, trigger$$1 as trigger, animate$$1 as animate, group$$1 as group, sequence$$1 as sequence, style$$1 as style, state$$1 as state, keyframes$$1 as keyframes, transition$$1 as transition, animate$1 as ɵba, group$1 as ɵbb, keyframes$1 as ɵbf, sequence$1 as ɵbc, state$1 as ɵbe, style$1 as ɵbd, transition$1 as ɵbg, trigger$1 as ɵz, _initViewEngine as ɵo, _iterableDiffersFactory as ɵl, _keyValueDiffersFactory as ɵm, _localeFactory as ɵn, ApplicationRef_ as ɵf, _appIdRandomProviderFactory as ɵg, defaultIterableDiffers as ɵh, defaultKeyValueDiffers as ɵi, DefaultIterableDifferFactory as ɵj, DefaultKeyValueDifferFactory as ɵk, ReflectiveInjector_ as ɵc, ReflectiveDependency as ɵd, resolveReflectiveProviders as ɵe, wtfEnabled as ɵp, createScope$1 as ɵr, detectWTF as ɵq, endTimeRange as ɵu, leave as ɵs, startTimeRange as ɵt, makeParamDecorator as ɵa, makePropDecorator as ɵb, _def as ɵw, DebugContext as ɵx };
+export { Class, createPlatform, assertPlatform, destroyPlatform, getPlatform, PlatformRef, ApplicationRef, enableProdMode, createPlatformFactory, NgProbeToken, PACKAGE_ROOT_URL, PLATFORM_INITIALIZER, PLATFORM_ID, APP_BOOTSTRAP_LISTENER, ApplicationInitStatus, DebugElement, DebugNode, asNativeElements, getDebugNode, setTestabilityGetter, TRANSLATIONS, TRANSLATIONS_FORMAT, LOCALE_ID, MissingTranslationStrategy, ApplicationModule, wtfCreateScope, wtfLeave, wtfStartTimeRange, wtfEndTimeRange, Type, EventEmitter, Sanitizer, SecurityContext, ANALYZE_FOR_ENTRY_COMPONENTS, Attribute, ContentChild, ContentChildren, Query, ViewChild, ViewChildren, Component, Directive, HostBinding, HostListener, Input, Output, Pipe, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule, ViewEncapsulation, Version, VERSION, forwardRef, resolveForwardRef, Injector, ReflectiveInjector, ResolvedReflectiveFactory, ReflectiveKey, InjectionToken, OpaqueToken, Inject, Optional, Injectable, Self, SkipSelf, Host, NgZone, RenderComponentType, Renderer, Renderer2, RendererFactory2, RootRenderer, COMPILER_OPTIONS, CompilerFactory, ModuleWithComponentFactories, ComponentFactory, ComponentFactoryResolver, NgModuleFactory, NgModuleRef, NgModuleFactoryLoader, getModuleFactory, QueryList, SystemJsNgModuleLoader, SystemJsNgModuleLoaderConfig, TemplateRef, ViewContainerRef, EmbeddedViewRef, ViewRef, ChangeDetectionStrategy, ChangeDetectorRef, SimpleChange, WrappedValue, platformCore, ValueUnwrapper as ɵValueUnwrapper, devModeEqual as ɵdevModeEqual, isListLikeIterable as ɵisListLikeIterable, ChangeDetectorStatus as ɵChangeDetectorStatus, isDefaultChangeDetectionStrategy as ɵisDefaultChangeDetectionStrategy, Console as ɵConsole, ERROR_COMPONENT_TYPE as ɵERROR_COMPONENT_TYPE, ComponentFactory as ɵComponentFactory, CodegenComponentFactoryResolver as ɵCodegenComponentFactoryResolver, LIFECYCLE_HOOKS_VALUES as ɵLIFECYCLE_HOOKS_VALUES, LifecycleHooks as ɵLifecycleHooks, ViewMetadata as ɵViewMetadata, Reflector as ɵReflector, reflector as ɵreflector, ReflectionCapabilities as ɵReflectionCapabilities, ReflectorReader as ɵReflectorReader, RenderDebugInfo as ɵRenderDebugInfo, _global as ɵglobal, looseIdentical as ɵlooseIdentical, stringify as ɵstringify, makeDecorator as ɵmakeDecorator, isObservable as ɵisObservable, isPromise as ɵisPromise, merge$1 as ɵmerge, NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR as ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR, NgModuleInjector as ɵNgModuleInjector, registerModuleFactory as ɵregisterModuleFactory, EMPTY_ARRAY as ɵEMPTY_ARRAY, EMPTY_MAP as ɵEMPTY_MAP, anchorDef as ɵand, createComponentFactory as ɵccf, createRendererType2 as ɵcrt, directiveDef as ɵdid, elementDef as ɵeld, elementEventFullName as ɵelementEventFullName, getComponentViewDefinitionFactory as ɵgetComponentViewDefinitionFactory, inlineInterpolate as ɵinlineInterpolate, interpolate as ɵinterpolate, ngContentDef as ɵncd, nodeValue as ɵnov, pipeDef as ɵpid, providerDef as ɵprd, pureArrayDef as ɵpad, pureObjectDef as ɵpod, purePipeDef as ɵppd, queryDef as ɵqud, textDef as ɵted, unwrapValue as ɵunv, viewDef as ɵvid, AUTO_STYLE$$1 as AUTO_STYLE, trigger$$1 as trigger, animate$$1 as animate, group$$1 as group, sequence$$1 as sequence, style$$1 as style, state$$1 as state, keyframes$$1 as keyframes, transition$$1 as transition, animate$1 as ɵba, group$1 as ɵbb, keyframes$1 as ɵbf, sequence$1 as ɵbc, state$1 as ɵbe, style$1 as ɵbd, transition$1 as ɵbg, trigger$1 as ɵz, _initViewEngine as ɵo, _iterableDiffersFactory as ɵl, _keyValueDiffersFactory as ɵm, _localeFactory as ɵn, ApplicationRef_ as ɵf, _appIdRandomProviderFactory as ɵg, DefaultIterableDifferFactory as ɵj, DefaultKeyValueDifferFactory as ɵk, ReflectiveInjector_ as ɵc, ReflectiveDependency as ɵd, resolveReflectiveProviders as ɵe, wtfEnabled as ɵp, createScope$1 as ɵr, detectWTF as ɵq, endTimeRange as ɵu, leave as ɵs, startTimeRange as ɵt, makePropDecorator as ɵb, _def as ɵw, DebugContext as ɵx };
 //# sourceMappingURL=core.js.map

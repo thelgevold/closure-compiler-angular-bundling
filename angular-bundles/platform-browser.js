@@ -3,8 +3,10 @@
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
-import { CommonModule, PlatformLocation, ɵPLATFORM_BROWSER_ID } from '@angular/common';
-import { APP_ID, APP_INITIALIZER, ApplicationModule, ApplicationRef, ErrorHandler, Inject, Injectable, InjectionToken, NgModule, NgProbeToken, NgZone, Optional, PLATFORM_ID, PLATFORM_INITIALIZER, RendererFactory2, RendererStyleFlags2, Sanitizer, SecurityContext, SkipSelf, Testability, Version, ViewEncapsulation, createPlatformFactory, getDebugNode, isDevMode, platformCore, setTestabilityGetter, ɵglobal, ɵmerge } from '@angular/core';
+
+//TGH: Removal
+//import { CommonModule } from '@angular/common';
+import { APP_ID, APP_INITIALIZER, ApplicationModule, ApplicationRef, Inject, Injectable, InjectionToken, NgModule, NgProbeToken, NgZone, Optional, PLATFORM_ID, PLATFORM_INITIALIZER, RendererFactory2, RendererStyleFlags2, Sanitizer, SkipSelf, Testability, Version, ViewEncapsulation, createPlatformFactory, getDebugNode, isDevMode, platformCore, setTestabilityGetter, ɵglobal, ɵmerge } from '@angular/core';
 import * as core from '@angular/core';
 
 /**
@@ -957,12 +959,12 @@ if (ɵglobal['Node']) {
         return !!(this.compareDocumentPosition(node) & 16);
     };
 }
-class BrowserDomAdapter extends GenericBrowserDomAdapter {
+class BrowserDomAdapter  {
     /**
      * @param {?} templateHtml
      * @return {?}
      */
-    parse(templateHtml) { throw new Error('parse not implemented'); }
+  //  parse(templateHtml) { throw new Error('parse not implemented'); }
     /**
      * @return {?}
      */
@@ -972,783 +974,779 @@ class BrowserDomAdapter extends GenericBrowserDomAdapter {
      * @param {?} name
      * @return {?}
      */
-    hasProperty(element, name) { return name in element; }
+  //  hasProperty(element, name) { return name in element; }
     /**
      * @param {?} el
      * @param {?} name
      * @param {?} value
      * @return {?}
      */
-    setProperty(el, name, value) { ((el))[name] = value; }
+  //  setProperty(el, name, value) { ((el))[name] = value; }
     /**
      * @param {?} el
      * @param {?} name
      * @return {?}
      */
-    getProperty(el, name) { return ((el))[name]; }
+  //  getProperty(el, name) { return ((el))[name]; }
     /**
      * @param {?} el
      * @param {?} methodName
      * @param {?} args
      * @return {?}
      */
-    invoke(el, methodName, args) { ((el))[methodName](...args); }
+  //  invoke(el, methodName, args) { ((el))[methodName](...args); }
     /**
      * @param {?} error
      * @return {?}
      */
-    logError(error) {
-        if (window.console) {
-            if (console.error) {
-                console.error(error);
-            }
-            else {
-                console.log(error);
-            }
-        }
-    }
+    // logError(error) {
+    //     if (window.console) {
+    //         if (console.error) {
+    //             console.error(error);
+    //         }
+    //         else {
+    //             console.log(error);
+    //         }
+    //     }
+    // }
+    // /**
+    //  * @param {?} error
+    //  * @return {?}
+    //  */
+    // log(error) {
+    //     if (window.console) {
+    //         window.console.log && window.console.log(error);
+    //     }
+    // }
+    // /**
+    //  * @param {?} error
+    //  * @return {?}
+    //  */
+    // logGroup(error) {
+    //     if (window.console) {
+    //         window.console.group && window.console.group(error);
+    //     }
+    // }
+    // /**
+    //  * @return {?}
+    //  */
+    // logGroupEnd() {
+    //     if (window.console) {
+    //         window.console.groupEnd && window.console.groupEnd();
+    //     }
+    // }
     /**
-     * @param {?} error
      * @return {?}
      */
-    log(error) {
-        if (window.console) {
-            window.console.log && window.console.log(error);
-        }
-    }
-    /**
-     * @param {?} error
-     * @return {?}
-     */
-    logGroup(error) {
-        if (window.console) {
-            window.console.group && window.console.group(error);
-        }
-    }
-    /**
-     * @return {?}
-     */
-    logGroupEnd() {
-        if (window.console) {
-            window.console.groupEnd && window.console.groupEnd();
-        }
-    }
-    /**
-     * @return {?}
-     */
-    get attrToPropMap() { return _attrToPropMap; }
+   // get attrToPropMap() { return _attrToPropMap; }
     /**
      * @param {?} nodeA
      * @param {?} nodeB
      * @return {?}
      */
-    contains(nodeA, nodeB) { return nodeContains.call(nodeA, nodeB); }
+   // contains(nodeA, nodeB) { return nodeContains.call(nodeA, nodeB); }
     /**
      * @param {?} el
      * @param {?} selector
      * @return {?}
      */
-    querySelector(el, selector) { return el.querySelector(selector); }
+    //querySelector(el, selector) { return el.querySelector(selector); }
     /**
      * @param {?} el
      * @param {?} selector
      * @return {?}
      */
-    querySelectorAll(el, selector) { return el.querySelectorAll(selector); }
+    //querySelectorAll(el, selector) { return el.querySelectorAll(selector); }
     /**
      * @param {?} el
      * @param {?} evt
      * @param {?} listener
      * @return {?}
      */
-    on(el, evt, listener) { el.addEventListener(evt, listener, false); }
+    //on(el, evt, listener) { el.addEventListener(evt, listener, false); }
     /**
      * @param {?} el
      * @param {?} evt
      * @param {?} listener
      * @return {?}
      */
-    onAndCancel(el, evt, listener) {
-        el.addEventListener(evt, listener, false);
-        // Needed to follow Dart's subscription semantic, until fix of
-        // https://code.google.com/p/dart/issues/detail?id=17406
-        return () => { el.removeEventListener(evt, listener, false); };
-    }
+    // onAndCancel(el, evt, listener) {
+    //     el.addEventListener(evt, listener, false);
+    //     // Needed to follow Dart's subscription semantic, until fix of
+    //     // https://code.google.com/p/dart/issues/detail?id=17406
+    //     return () => { el.removeEventListener(evt, listener, false); };
+    // }
     /**
      * @param {?} el
      * @param {?} evt
      * @return {?}
      */
-    dispatchEvent(el, evt) { el.dispatchEvent(evt); }
+  //  dispatchEvent(el, evt) { el.dispatchEvent(evt); }
     /**
      * @param {?} eventType
      * @return {?}
      */
-    createMouseEvent(eventType) {
-        const /** @type {?} */ evt = document.createEvent('MouseEvent');
-        evt.initEvent(eventType, true, true);
-        return evt;
-    }
+    // createMouseEvent(eventType) {
+    //     const /** @type {?} */ evt = document.createEvent('MouseEvent');
+    //     evt.initEvent(eventType, true, true);
+    //     return evt;
+    // }
     /**
      * @param {?} eventType
      * @return {?}
      */
-    createEvent(eventType) {
-        const /** @type {?} */ evt = document.createEvent('Event');
-        evt.initEvent(eventType, true, true);
-        return evt;
-    }
+    // createEvent(eventType) {
+    //     const /** @type {?} */ evt = document.createEvent('Event');
+    //     evt.initEvent(eventType, true, true);
+    //     return evt;
+    // }
     /**
      * @param {?} evt
      * @return {?}
      */
-    preventDefault(evt) {
-        evt.preventDefault();
-        evt.returnValue = false;
-    }
+    // preventDefault(evt) {
+    //     evt.preventDefault();
+    //     evt.returnValue = false;
+    // }
     /**
      * @param {?} evt
      * @return {?}
      */
-    isPrevented(evt) {
-        return evt.defaultPrevented || evt.returnValue != null && !evt.returnValue;
-    }
+    // isPrevented(evt) {
+    //     return evt.defaultPrevented || evt.returnValue != null && !evt.returnValue;
+    // }
     /**
      * @param {?} el
      * @return {?}
      */
-    getInnerHTML(el) { return el.innerHTML; }
+ //   getInnerHTML(el) { return el.innerHTML; }
     /**
      * @param {?} el
      * @return {?}
      */
-    getTemplateContent(el) {
-        return 'content' in el && el instanceof HTMLTemplateElement ? el.content : null;
-    }
+    // getTemplateContent(el) {
+    //     return 'content' in el && el instanceof HTMLTemplateElement ? el.content : null;
+    // }
     /**
      * @param {?} el
      * @return {?}
      */
-    getOuterHTML(el) { return el.outerHTML; }
+   // getOuterHTML(el) { return el.outerHTML; }
     /**
      * @param {?} node
      * @return {?}
      */
-    nodeName(node) { return node.nodeName; }
+  //  nodeName(node) { return node.nodeName; }
     /**
      * @param {?} node
      * @return {?}
      */
-    nodeValue(node) { return node.nodeValue; }
+   // nodeValue(node) { return node.nodeValue; }
     /**
      * @param {?} node
      * @return {?}
      */
-    type(node) { return node.type; }
+   // type(node) { return node.type; }
     /**
      * @param {?} node
      * @return {?}
      */
-    content(node) {
-        if (this.hasProperty(node, 'content')) {
-            return ((node)).content;
-        }
-        else {
-            return node;
-        }
-    }
+    // content(node) {
+    //     if (this.hasProperty(node, 'content')) {
+    //         return ((node)).content;
+    //     }
+    //     else {
+    //         return node;
+    //     }
+    // }
     /**
      * @param {?} el
      * @return {?}
      */
-    firstChild(el) { return el.firstChild; }
+   // firstChild(el) { return el.firstChild; }
     /**
      * @param {?} el
      * @return {?}
      */
-    nextSibling(el) { return el.nextSibling; }
+  //  nextSibling(el) { return el.nextSibling; }
     /**
      * @param {?} el
      * @return {?}
      */
-    parentElement(el) { return el.parentNode; }
+  //  parentElement(el) { return el.parentNode; }
     /**
      * @param {?} el
      * @return {?}
      */
-    childNodes(el) { return el.childNodes; }
+  //  childNodes(el) { return el.childNodes; }
     /**
      * @param {?} el
      * @return {?}
      */
-    childNodesAsList(el) {
-        const /** @type {?} */ childNodes = el.childNodes;
-        const /** @type {?} */ res = new Array(childNodes.length);
-        for (let /** @type {?} */ i = 0; i < childNodes.length; i++) {
-            res[i] = childNodes[i];
-        }
-        return res;
-    }
+    // childNodesAsList(el) {
+    //     const /** @type {?} */ childNodes = el.childNodes;
+    //     const /** @type {?} */ res = new Array(childNodes.length);
+    //     for (let /** @type {?} */ i = 0; i < childNodes.length; i++) {
+    //         res[i] = childNodes[i];
+    //     }
+    //     return res;
+    // }
     /**
      * @param {?} el
      * @return {?}
      */
-    clearNodes(el) {
-        while (el.firstChild) {
-            el.removeChild(el.firstChild);
-        }
-    }
-    /**
-     * @param {?} el
-     * @param {?} node
-     * @return {?}
-     */
-    appendChild(el, node) { el.appendChild(node); }
+    // clearNodes(el) {
+    //     while (el.firstChild) {
+    //         el.removeChild(el.firstChild);
+    //     }
+    // }
     /**
      * @param {?} el
      * @param {?} node
      * @return {?}
      */
-    removeChild(el, node) { el.removeChild(node); }
+   // appendChild(el, node) { el.appendChild(node); }
+    /**
+     * @param {?} el
+     * @param {?} node
+     * @return {?}
+     */
+   // removeChild(el, node) { el.removeChild(node); }
     /**
      * @param {?} el
      * @param {?} newChild
      * @param {?} oldChild
      * @return {?}
      */
-    replaceChild(el, newChild, oldChild) { el.replaceChild(newChild, oldChild); }
+  //  replaceChild(el, newChild, oldChild) { el.replaceChild(newChild, oldChild); }
     /**
      * @param {?} node
      * @return {?}
      */
-    remove(node) {
-        if (node.parentNode) {
-            node.parentNode.removeChild(node);
-        }
-        return node;
-    }
+    // remove(node) {
+    //     if (node.parentNode) {
+    //         node.parentNode.removeChild(node);
+    //     }
+    //     return node;
+    // }
     /**
      * @param {?} parent
      * @param {?} ref
      * @param {?} node
      * @return {?}
      */
-    insertBefore(parent, ref, node) { parent.insertBefore(node, ref); }
+   // insertBefore(parent, ref, node) { parent.insertBefore(node, ref); }
     /**
      * @param {?} parent
      * @param {?} ref
      * @param {?} nodes
      * @return {?}
      */
-    insertAllBefore(parent, ref, nodes) {
-        nodes.forEach((n) => parent.insertBefore(n, ref));
-    }
+    // insertAllBefore(parent, ref, nodes) {
+    //     nodes.forEach((n) => parent.insertBefore(n, ref));
+    // }
     /**
      * @param {?} parent
      * @param {?} ref
      * @param {?} node
      * @return {?}
      */
-    insertAfter(parent, ref, node) { parent.insertBefore(node, ref.nextSibling); }
+  //  insertAfter(parent, ref, node) { parent.insertBefore(node, ref.nextSibling); }
     /**
      * @param {?} el
      * @param {?} value
      * @return {?}
      */
-    setInnerHTML(el, value) { el.innerHTML = value; }
+  //  setInnerHTML(el, value) { el.innerHTML = value; }
     /**
      * @param {?} el
      * @return {?}
      */
-    getText(el) { return el.textContent; }
-    /**
-     * @param {?} el
-     * @param {?} value
-     * @return {?}
-     */
-    setText(el, value) { el.textContent = value; }
-    /**
-     * @param {?} el
-     * @return {?}
-     */
-    getValue(el) { return el.value; }
+  //  getText(el) { return el.textContent; }
     /**
      * @param {?} el
      * @param {?} value
      * @return {?}
      */
-    setValue(el, value) { el.value = value; }
+  //  setText(el, value) { el.textContent = value; }
     /**
      * @param {?} el
      * @return {?}
      */
-    getChecked(el) { return el.checked; }
+  //  getValue(el) { return el.value; }
     /**
      * @param {?} el
      * @param {?} value
      * @return {?}
      */
-    setChecked(el, value) { el.checked = value; }
+  //  setValue(el, value) { el.value = value; }
+    /**
+     * @param {?} el
+     * @return {?}
+     */
+  //  getChecked(el) { return el.checked; }
+    /**
+     * @param {?} el
+     * @param {?} value
+     * @return {?}
+     */
+   // setChecked(el, value) { el.checked = value; }
     /**
      * @param {?} text
      * @return {?}
      */
-    createComment(text) { return document.createComment(text); }
+   // createComment(text) { return document.createComment(text); }
     /**
      * @param {?} html
      * @return {?}
      */
-    createTemplate(html) {
-        const /** @type {?} */ t = document.createElement('template');
-        t.innerHTML = html;
-        return t;
-    }
+    // createTemplate(html) {
+    //     const /** @type {?} */ t = document.createElement('template');
+    //     t.innerHTML = html;
+    //     return t;
+    // }
     /**
      * @param {?} tagName
      * @param {?=} doc
      * @return {?}
      */
-    createElement(tagName, doc = document) { return doc.createElement(tagName); }
+   // createElement(tagName, doc = document) { return doc.createElement(tagName); }
     /**
      * @param {?} ns
      * @param {?} tagName
      * @param {?=} doc
      * @return {?}
      */
-    createElementNS(ns, tagName, doc = document) {
-        return doc.createElementNS(ns, tagName);
-    }
+    // createElementNS(ns, tagName, doc = document) {
+    //     return doc.createElementNS(ns, tagName);
+    // }
     /**
      * @param {?} text
      * @param {?=} doc
      * @return {?}
      */
-    createTextNode(text, doc = document) { return doc.createTextNode(text); }
+    //createTextNode(text, doc = document) { return doc.createTextNode(text); }
     /**
      * @param {?} attrName
      * @param {?} attrValue
      * @param {?=} doc
      * @return {?}
      */
-    createScriptTag(attrName, attrValue, doc = document) {
-        const /** @type {?} */ el = (doc.createElement('SCRIPT'));
-        el.setAttribute(attrName, attrValue);
-        return el;
-    }
+    // createScriptTag(attrName, attrValue, doc = document) {
+    //     const /** @type {?} */ el = (doc.createElement('SCRIPT'));
+    //     el.setAttribute(attrName, attrValue);
+    //     return el;
+    // }
     /**
      * @param {?} css
      * @param {?=} doc
      * @return {?}
      */
-    createStyleElement(css, doc = document) {
-        const /** @type {?} */ style = (doc.createElement('style'));
-        this.appendChild(style, this.createTextNode(css));
-        return style;
-    }
+    // createStyleElement(css, doc = document) {
+    //     const /** @type {?} */ style = (doc.createElement('style'));
+    //     this.appendChild(style, this.createTextNode(css));
+    //     return style;
+    // }
     /**
      * @param {?} el
      * @return {?}
      */
-    createShadowRoot(el) { return ((el)).createShadowRoot(); }
+   // createShadowRoot(el) { return ((el)).createShadowRoot(); }
     /**
      * @param {?} el
      * @return {?}
      */
-    getShadowRoot(el) { return ((el)).shadowRoot; }
+ //   getShadowRoot(el) { return ((el)).shadowRoot; }
     /**
      * @param {?} el
      * @return {?}
      */
-    getHost(el) { return ((el)).host; }
+   // getHost(el) { return ((el)).host; }
     /**
      * @param {?} node
      * @return {?}
      */
-    clone(node) { return node.cloneNode(true); }
+    //clone(node) { return node.cloneNode(true); }
     /**
      * @param {?} element
      * @param {?} name
      * @return {?}
      */
-    getElementsByClassName(element, name) {
-        return element.getElementsByClassName(name);
-    }
+    // getElementsByClassName(element, name) {
+    //     return element.getElementsByClassName(name);
+    // }
     /**
      * @param {?} element
      * @param {?} name
      * @return {?}
      */
-    getElementsByTagName(element, name) {
-        return element.getElementsByTagName(name);
-    }
+    // getElementsByTagName(element, name) {
+    //     return element.getElementsByTagName(name);
+    // }
     /**
      * @param {?} element
      * @return {?}
      */
-    classList(element) { return Array.prototype.slice.call(element.classList, 0); }
-    /**
-     * @param {?} element
-     * @param {?} className
-     * @return {?}
-     */
-    addClass(element, className) { element.classList.add(className); }
+   // classList(element) { return Array.prototype.slice.call(element.classList, 0); }
     /**
      * @param {?} element
      * @param {?} className
      * @return {?}
      */
-    removeClass(element, className) { element.classList.remove(className); }
+  //  addClass(element, className) { element.classList.add(className); }
     /**
      * @param {?} element
      * @param {?} className
      * @return {?}
      */
-    hasClass(element, className) {
-        return element.classList.contains(className);
-    }
+   // removeClass(element, className) { element.classList.remove(className); }
+    /**
+     * @param {?} element
+     * @param {?} className
+     * @return {?}
+     */
+    // hasClass(element, className) {
+    //     return element.classList.contains(className);
+    // }
     /**
      * @param {?} element
      * @param {?} styleName
      * @param {?} styleValue
      * @return {?}
      */
-    setStyle(element, styleName, styleValue) {
-        element.style[styleName] = styleValue;
-    }
+    // setStyle(element, styleName, styleValue) {
+    //     element.style[styleName] = styleValue;
+    // }
     /**
      * @param {?} element
      * @param {?} stylename
      * @return {?}
      */
-    removeStyle(element, stylename) {
-        // IE requires '' instead of null
-        // see https://github.com/angular/angular/issues/7916
-        element.style[stylename] = '';
-    }
+   
     /**
      * @param {?} element
      * @param {?} stylename
      * @return {?}
      */
-    getStyle(element, stylename) { return element.style[stylename]; }
+   // getStyle(element, stylename) { return element.style[stylename]; }
     /**
      * @param {?} element
      * @param {?} styleName
      * @param {?=} styleValue
      * @return {?}
      */
-    hasStyle(element, styleName, styleValue = null) {
-        const /** @type {?} */ value = this.getStyle(element, styleName) || '';
-        return styleValue ? value == styleValue : value.length > 0;
-    }
+    // hasStyle(element, styleName, styleValue = null) {
+    //     const /** @type {?} */ value = this.getStyle(element, styleName) || '';
+    //     return styleValue ? value == styleValue : value.length > 0;
+    // }
     /**
      * @param {?} element
      * @return {?}
      */
-    tagName(element) { return element.tagName; }
+   // tagName(element) { return element.tagName; }
     /**
      * @param {?} element
      * @return {?}
      */
-    attributeMap(element) {
-        const /** @type {?} */ res = new Map();
-        const /** @type {?} */ elAttrs = element.attributes;
-        for (let /** @type {?} */ i = 0; i < elAttrs.length; i++) {
-            const /** @type {?} */ attrib = elAttrs[i];
-            res.set(attrib.name, attrib.value);
-        }
-        return res;
-    }
+    // attributeMap(element) {
+    //     const /** @type {?} */ res = new Map();
+    //     const /** @type {?} */ elAttrs = element.attributes;
+    //     for (let /** @type {?} */ i = 0; i < elAttrs.length; i++) {
+    //         const /** @type {?} */ attrib = elAttrs[i];
+    //         res.set(attrib.name, attrib.value);
+    //     }
+    //     return res;
+    // }
     /**
      * @param {?} element
      * @param {?} attribute
      * @return {?}
      */
-    hasAttribute(element, attribute) {
-        return element.hasAttribute(attribute);
-    }
+    // hasAttribute(element, attribute) {
+    //     return element.hasAttribute(attribute);
+    // }
     /**
      * @param {?} element
      * @param {?} ns
      * @param {?} attribute
      * @return {?}
      */
-    hasAttributeNS(element, ns, attribute) {
-        return element.hasAttributeNS(ns, attribute);
-    }
+    // hasAttributeNS(element, ns, attribute) {
+    //     return element.hasAttributeNS(ns, attribute);
+    // }
     /**
      * @param {?} element
      * @param {?} attribute
      * @return {?}
      */
-    getAttribute(element, attribute) {
-        return element.getAttribute(attribute);
-    }
+    // getAttribute(element, attribute) {
+    //     return element.getAttribute(attribute);
+    // }
     /**
      * @param {?} element
      * @param {?} ns
      * @param {?} name
      * @return {?}
      */
-    getAttributeNS(element, ns, name) {
-        return element.getAttributeNS(ns, name);
-    }
+    // getAttributeNS(element, ns, name) {
+    //     return element.getAttributeNS(ns, name);
+    // }
     /**
      * @param {?} element
-     * @param {?} name
-     * @param {?} value
-     * @return {?}
-     */
-    setAttribute(element, name, value) { element.setAttribute(name, value); }
-    /**
-     * @param {?} element
-     * @param {?} ns
      * @param {?} name
      * @param {?} value
      * @return {?}
      */
-    setAttributeNS(element, ns, name, value) {
-        element.setAttributeNS(ns, name, value);
-    }
+    //setAttribute(element, name, value) { element.setAttribute(name, value); }
+    /**
+     * @param {?} element
+     * @param {?} ns
+     * @param {?} name
+     * @param {?} value
+     * @return {?}
+     */
+    // setAttributeNS(element, ns, name, value) {
+    //     element.setAttributeNS(ns, name, value);
+    // }
     /**
      * @param {?} element
      * @param {?} attribute
      * @return {?}
      */
-    removeAttribute(element, attribute) { element.removeAttribute(attribute); }
+    //removeAttribute(element, attribute) { element.removeAttribute(attribute); }
     /**
      * @param {?} element
      * @param {?} ns
      * @param {?} name
      * @return {?}
      */
-    removeAttributeNS(element, ns, name) {
-        element.removeAttributeNS(ns, name);
-    }
+    // removeAttributeNS(element, ns, name) {
+    //     element.removeAttributeNS(ns, name);
+    // }
     /**
      * @param {?} el
      * @return {?}
      */
-    templateAwareRoot(el) { return this.isTemplateElement(el) ? this.content(el) : el; }
+   // templateAwareRoot(el) { return this.isTemplateElement(el) ? this.content(el) : el; }
     /**
      * @return {?}
      */
-    createHtmlDocument() {
-        return document.implementation.createHTMLDocument('fakeTitle');
-    }
+    // createHtmlDocument() {
+    //     return document.implementation.createHTMLDocument('fakeTitle');
+    // }
     /**
      * @param {?} el
      * @return {?}
      */
-    getBoundingClientRect(el) {
-        try {
-            return el.getBoundingClientRect();
-        }
-        catch (e) {
-            return { top: 0, bottom: 0, left: 0, right: 0, width: 0, height: 0 };
-        }
-    }
+    // getBoundingClientRect(el) {
+    //     try {
+    //         return el.getBoundingClientRect();
+    //     }
+    //     catch (e) {
+    //         return { top: 0, bottom: 0, left: 0, right: 0, width: 0, height: 0 };
+    //     }
+    // }
     /**
      * @param {?} doc
      * @return {?}
      */
-    getTitle(doc) { return document.title; }
+    //getTitle(doc) { return document.title; }
     /**
      * @param {?} doc
      * @param {?} newTitle
      * @return {?}
      */
-    setTitle(doc, newTitle) { document.title = newTitle || ''; }
+    //setTitle(doc, newTitle) { document.title = newTitle || ''; }
     /**
      * @param {?} n
      * @param {?} selector
      * @return {?}
      */
-    elementMatches(n, selector) {
-        if (n instanceof HTMLElement) {
-            return n.matches && n.matches(selector) ||
-                n.msMatchesSelector && n.msMatchesSelector(selector) ||
-                n.webkitMatchesSelector && n.webkitMatchesSelector(selector);
-        }
-        return false;
-    }
+    // elementMatches(n, selector) {
+    //     if (n instanceof HTMLElement) {
+    //         return n.matches && n.matches(selector) ||
+    //             n.msMatchesSelector && n.msMatchesSelector(selector) ||
+    //             n.webkitMatchesSelector && n.webkitMatchesSelector(selector);
+    //     }
+    //     return false;
+    // }
     /**
      * @param {?} el
      * @return {?}
      */
-    isTemplateElement(el) {
-        return el instanceof HTMLElement && el.nodeName == 'TEMPLATE';
-    }
+    // isTemplateElement(el) {
+    //     return el instanceof HTMLElement && el.nodeName == 'TEMPLATE';
+    // }
     /**
      * @param {?} node
      * @return {?}
      */
-    isTextNode(node) { return node.nodeType === Node.TEXT_NODE; }
+    //isTextNode(node) { return node.nodeType === Node.TEXT_NODE; }
     /**
      * @param {?} node
      * @return {?}
      */
-    isCommentNode(node) { return node.nodeType === Node.COMMENT_NODE; }
+   // isCommentNode(node) { return node.nodeType === Node.COMMENT_NODE; }
     /**
      * @param {?} node
      * @return {?}
      */
-    isElementNode(node) { return node.nodeType === Node.ELEMENT_NODE; }
+   // isElementNode(node) { return node.nodeType === Node.ELEMENT_NODE; }
     /**
      * @param {?} node
      * @return {?}
      */
-    hasShadowRoot(node) {
-        return node.shadowRoot != null && node instanceof HTMLElement;
-    }
+    // hasShadowRoot(node) {
+    //     return node.shadowRoot != null && node instanceof HTMLElement;
+    // }
     /**
      * @param {?} node
      * @return {?}
      */
-    isShadowRoot(node) { return node instanceof DocumentFragment; }
+  //  isShadowRoot(node) { return node instanceof DocumentFragment; }
     /**
      * @param {?} node
      * @return {?}
      */
-    importIntoDoc(node) { return document.importNode(this.templateAwareRoot(node), true); }
+  //  importIntoDoc(node) { return document.importNode(this.templateAwareRoot(node), true); }
     /**
      * @param {?} node
      * @return {?}
      */
-    adoptNode(node) { return document.adoptNode(node); }
+  //  adoptNode(node) { return document.adoptNode(node); }
     /**
      * @param {?} el
      * @return {?}
      */
-    getHref(el) { return ((el)).href; }
+  //  getHref(el) { return ((el)).href; }
     /**
      * @param {?} event
      * @return {?}
      */
-    getEventKey(event) {
-        let /** @type {?} */ key = event.key;
-        if (key == null) {
-            key = event.keyIdentifier;
-            // keyIdentifier is defined in the old draft of DOM Level 3 Events implemented by Chrome and
-            // Safari cf
-            // http://www.w3.org/TR/2007/WD-DOM-Level-3-Events-20071221/events.html#Events-KeyboardEvents-Interfaces
-            if (key == null) {
-                return 'Unidentified';
-            }
-            if (key.startsWith('U+')) {
-                key = String.fromCharCode(parseInt(key.substring(2), 16));
-                if (event.location === DOM_KEY_LOCATION_NUMPAD && _chromeNumKeyPadMap.hasOwnProperty(key)) {
-                    // There is a bug in Chrome for numeric keypad keys:
-                    // https://code.google.com/p/chromium/issues/detail?id=155654
-                    // 1, 2, 3 ... are reported as A, B, C ...
-                    key = ((_chromeNumKeyPadMap))[key];
-                }
-            }
-        }
-        return _keyMap[key] || key;
-    }
+    // getEventKey(event) {
+    //     let /** @type {?} */ key = event.key;
+    //     if (key == null) {
+    //         key = event.keyIdentifier;
+    //         // keyIdentifier is defined in the old draft of DOM Level 3 Events implemented by Chrome and
+    //         // Safari cf
+    //         // http://www.w3.org/TR/2007/WD-DOM-Level-3-Events-20071221/events.html#Events-KeyboardEvents-Interfaces
+    //         if (key == null) {
+    //             return 'Unidentified';
+    //         }
+    //         if (key.startsWith('U+')) {
+    //             key = String.fromCharCode(parseInt(key.substring(2), 16));
+    //             if (event.location === DOM_KEY_LOCATION_NUMPAD && _chromeNumKeyPadMap.hasOwnProperty(key)) {
+    //                 // There is a bug in Chrome for numeric keypad keys:
+    //                 // https://code.google.com/p/chromium/issues/detail?id=155654
+    //                 // 1, 2, 3 ... are reported as A, B, C ...
+    //                 key = ((_chromeNumKeyPadMap))[key];
+    //             }
+    //         }
+    //     }
+    //     return _keyMap[key] || key;
+    // }
     /**
      * @param {?} doc
      * @param {?} target
      * @return {?}
      */
-    getGlobalEventTarget(doc, target) {
-        if (target === 'window') {
-            return window;
-        }
-        if (target === 'document') {
-            return document;
-        }
-        if (target === 'body') {
-            return document.body;
-        }
-    }
+    // getGlobalEventTarget(doc, target) {
+    //     if (target === 'window') {
+    //         return window;
+    //     }
+    //     if (target === 'document') {
+    //         return document;
+    //     }
+    //     if (target === 'body') {
+    //         return document.body;
+    //     }
+    // }
     /**
      * @return {?}
      */
-    getHistory() { return window.history; }
+   // getHistory() { return window.history; }
     /**
      * @return {?}
      */
-    getLocation() { return window.location; }
+   // getLocation() { return window.location; }
     /**
      * @param {?} doc
      * @return {?}
      */
-    getBaseHref(doc) {
-        const /** @type {?} */ href = getBaseElementHref();
-        return href == null ? null : relativePath(href);
-    }
+    // getBaseHref(doc) {
+    //     const /** @type {?} */ href = getBaseElementHref();
+    //     return href == null ? null : relativePath(href);
+    // }
     /**
      * @return {?}
      */
-    resetBaseElement() { baseElement = null; }
+   // resetBaseElement() { baseElement = null; }
     /**
      * @return {?}
      */
-    getUserAgent() { return window.navigator.userAgent; }
+    //getUserAgent() { return window.navigator.userAgent; }
     /**
      * @param {?} element
      * @param {?} name
      * @param {?} value
      * @return {?}
      */
-    setData(element, name, value) {
-        this.setAttribute(element, 'data-' + name, value);
-    }
+    // setData(element, name, value) {
+    //     this.setAttribute(element, 'data-' + name, value);
+    // }
     /**
      * @param {?} element
      * @param {?} name
      * @return {?}
      */
-    getData(element, name) {
-        return this.getAttribute(element, 'data-' + name);
-    }
+    // getData(element, name) {
+    //     return this.getAttribute(element, 'data-' + name);
+    // }
     /**
      * @param {?} element
      * @return {?}
      */
-    getComputedStyle(element) { return getComputedStyle(element); }
+   // getComputedStyle(element) { return getComputedStyle(element); }
     /**
      * @param {?} path
      * @param {?} value
      * @return {?}
      */
-    setGlobalVar(path, value) { setValueOnPath(ɵglobal, path, value); }
+   // setGlobalVar(path, value) { setValueOnPath(ɵglobal, path, value); }
     /**
      * @return {?}
      */
-    supportsWebAnimation() {
-        return typeof ((Element)).prototype['animate'] === 'function';
-    }
+    // supportsWebAnimation() {
+    //     return typeof ((Element)).prototype['animate'] === 'function';
+    // }
     /**
      * @return {?}
      */
-    performanceNow() {
-        // performance.now() is not available in all browsers, see
-        // http://caniuse.com/#search=performance.now
-        return window.performance && window.performance.now ? window.performance.now() :
-            new Date().getTime();
-    }
+    // performanceNow() {
+    //     // performance.now() is not available in all browsers, see
+    //     // http://caniuse.com/#search=performance.now
+    //     return window.performance && window.performance.now ? window.performance.now() :
+    //         new Date().getTime();
+    // }
     /**
      * @return {?}
      */
-    supportsCookies() { return true; }
+   // supportsCookies() { return true; }
     /**
      * @param {?} name
      * @return {?}
      */
-    getCookie(name) { return parseCookieValue(document.cookie, name); }
+  //  getCookie(name) { return parseCookieValue(document.cookie, name); }
     /**
      * @param {?} name
      * @param {?} value
      * @return {?}
      */
-    setCookie(name, value) {
-        // document.cookie is magical, assigning into it assigns/overrides one cookie value, but does
-        // not clear other cookies.
-        document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
-    }
+    // setCookie(name, value) {
+    //     // document.cookie is magical, assigning into it assigns/overrides one cookie value, but does
+    //     // not clear other cookies.
+    //     document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+    // }
 }
 let baseElement = null;
 /**
@@ -2306,9 +2304,9 @@ class NgProbeToken$1 {
  */
 function _createNgProbe(extraTokens, coreTokens) {
     const /** @type {?} */ tokens = (extraTokens || []).concat(coreTokens || []);
-    getDOM().setGlobalVar(INSPECT_GLOBAL_NAME, inspectNativeElement);
-    getDOM().setGlobalVar(CORE_TOKENS_GLOBAL_NAME, ɵmerge(CORE_TOKENS, _ngProbeTokensToMap(tokens || [])));
-    return () => inspectNativeElement;
+    //getDOM().setGlobalVar(INSPECT_GLOBAL_NAME, inspectNativeElement);
+    //getDOM().setGlobalVar(CORE_TOKENS_GLOBAL_NAME, ɵmerge(CORE_TOKENS, _ngProbeTokensToMap(tokens || [])));
+    return () => {};
 }
 /**
  * @param {?} tokens
@@ -2320,17 +2318,18 @@ function _ngProbeTokensToMap(tokens) {
 /**
  * Providers which support debugging Angular applications (e.g. via `ng.probe`).
  */
-const ELEMENT_PROBE_PROVIDERS = [
-    {
-        provide: APP_INITIALIZER,
-        useFactory: _createNgProbe,
-        deps: [
-            [NgProbeToken$1, new Optional()],
-            [NgProbeToken, new Optional()],
-        ],
-        multi: true,
-    },
-];
+// TGH: Removal
+// const ELEMENT_PROBE_PROVIDERS = [
+//     {
+//         provide: APP_INITIALIZER,
+//         useFactory: _createNgProbe,
+//         deps: [
+//             [NgProbeToken$1, new Optional()],
+//             [NgProbeToken, new Optional()],
+//         ],
+//         multi: true,
+//     },
+// ];
 
 /**
  * @license
@@ -2578,14 +2577,14 @@ const CONTENT_ATTR = `_ngcontent-${COMPONENT_VARIABLE}`;
  * @return {?}
  */
 function shimContentAttribute(componentShortId) {
-    return CONTENT_ATTR.replace(COMPONENT_REGEX, componentShortId);
+    //return CONTENT_ATTR.replace(COMPONENT_REGEX, componentShortId);
 }
 /**
  * @param {?} componentShortId
  * @return {?}
  */
 function shimHostAttribute(componentShortId) {
-    return HOST_ATTR.replace(COMPONENT_REGEX, componentShortId);
+    //return HOST_ATTR.replace(COMPONENT_REGEX, componentShortId);
 }
 /**
  * @param {?} compId
@@ -2597,12 +2596,12 @@ function flattenStyles(compId, styles, target) {
     for (let /** @type {?} */ i = 0; i < styles.length; i++) {
         let /** @type {?} */ style = styles[i];
         if (Array.isArray(style)) {
-            flattenStyles(compId, style, target);
+           // flattenStyles(compId, style, target);
         }
-        else {
-            style = style.replace(COMPONENT_REGEX, compId);
-            target.push(style);
-        }
+        // else {
+        //     style = style.replace(COMPONENT_REGEX, compId);
+        //     target.push(style);
+        // }
     }
     return target;
 }
@@ -2652,16 +2651,17 @@ class DomRendererFactory2 {
                 ((renderer)).applyToHost(element);
                 return renderer;
             }
-            case ViewEncapsulation.Native:
-                return new ShadowDomRenderer(this.eventManager, this.sharedStylesHost, element, type);
-            default: {
-                if (!this.rendererByCompId.has(type.id)) {
-                    const /** @type {?} */ styles = flattenStyles(type.id, type.styles, []);
-                    this.sharedStylesHost.addStyles(styles);
-                    this.rendererByCompId.set(type.id, this.defaultRenderer);
-                }
-                return this.defaultRenderer;
-            }
+            // TGH: Removal
+            // case ViewEncapsulation.Native:
+            //     return new ShadowDomRenderer(this.eventManager, this.sharedStylesHost, element, type);
+            // default: {
+            //     if (!this.rendererByCompId.has(type.id)) {
+            //         const /** @type {?} */ styles = flattenStyles(type.id, type.styles, []);
+            //         this.sharedStylesHost.addStyles(styles);
+            //         this.rendererByCompId.set(type.id, this.defaultRenderer);
+            //     }
+            //     return this.defaultRenderer;
+            // }
         }
     }
 }
@@ -2893,8 +2893,8 @@ class EmulatedEncapsulationDomRenderer2 extends DefaultDomRenderer2 {
     constructor(eventManager, sharedStylesHost, component) {
         super(eventManager);
         this.component = component;
-        const styles = flattenStyles(component.id, component.styles, []);
-        sharedStylesHost.addStyles(styles);
+        //const styles = flattenStyles(component.id, component.styles, []);
+        //sharedStylesHost.addStyles(styles);
         this.contentAttr = shimContentAttribute(component.id);
         this.hostAttr = shimHostAttribute(component.id);
     }
@@ -2928,12 +2928,12 @@ class ShadowDomRenderer extends DefaultDomRenderer2 {
         this.component = component;
         this.shadowRoot = hostEl.createShadowRoot();
         this.sharedStylesHost.addHost(this.shadowRoot);
-        const styles = flattenStyles(component.id, component.styles, []);
-        for (let i = 0; i < styles.length; i++) {
-            const styleEl = document.createElement('style');
-            styleEl.textContent = styles[i];
-            this.shadowRoot.appendChild(styleEl);
-        }
+        // const styles = flattenStyles(component.id, component.styles, []);
+        // for (let i = 0; i < styles.length; i++) {
+        //     const styleEl = document.createElement('style');
+        //     styleEl.textContent = styles[i];
+        //     this.shadowRoot.appendChild(styleEl);
+        // }
     }
     /**
      * @param {?} node
@@ -3110,7 +3110,7 @@ class HammerGesturesPlugin extends EventManagerPlugin {
      * @return {?}
      */
     supports(eventName) {
-        if (!EVENT_NAMES.hasOwnProperty(eventName.toLowerCase()) && !this.isCustomEvent(eventName)) {
+        if (!this.isCustomEvent(eventName)) {
             return false;
         }
         if (!((window)).Hammer) {
@@ -3151,7 +3151,7 @@ HammerGesturesPlugin.decorators = [
  */
 HammerGesturesPlugin.ctorParameters = () => [
     { type: undefined, decorators: [{ type: Inject, args: [DOCUMENT,] },] },
-    { type: HammerGestureConfig, decorators: [{ type: Inject, args: [HAMMER_GESTURE_CONFIG,] },] },
+    //{ type: HammerGestureConfig, decorators: [{ type: Inject, args: [HAMMER_GESTURE_CONFIG,] },] },
 ];
 
 /**
@@ -3319,20 +3319,20 @@ KeyEventsPlugin.ctorParameters = () => [
  *
  * This regular expression was taken from the Closure sanitization library.
  */
-const SAFE_URL_PATTERN = /^(?:(?:https?|mailto|ftp|tel|file):|[^&:/?#]*(?:[/?#]|$))/gi;
+//const SAFE_URL_PATTERN = /^(?:(?:https?|mailto|ftp|tel|file):|[^&:/?#]*(?:[/?#]|$))/gi;
 /** A pattern that matches safe data URLs. Only matches image, video and audio types. */
-const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[a-z0-9+\/]+=*$/i;
+//const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[a-z0-9+\/]+=*$/i;
 /**
  * @param {?} url
  * @return {?}
  */
 function sanitizeUrl(url) {
     url = String(url);
-    if (url.match(SAFE_URL_PATTERN) || url.match(DATA_URL_PATTERN))
-        return url;
-    if (isDevMode()) {
-        getDOM().log(`WARNING: sanitizing unsafe URL value ${url} (see http://g.co/ng/security#xss)`);
-    }
+    // if (url.match(SAFE_URL_PATTERN) || url.match(DATA_URL_PATTERN))
+    //     return url;
+    // if (isDevMode()) {
+    //     getDOM().log(`WARNING: sanitizing unsafe URL value ${url} (see http://g.co/ng/security#xss)`);
+    // }
     return 'unsafe:' + url;
 }
 /**
@@ -3408,37 +3408,37 @@ function merge(...sets) {
 // http://simon.html5.org/html-elements
 // Safe Void Elements - HTML5
 // http://dev.w3.org/html5/spec/Overview.html#void-elements
-const VOID_ELEMENTS = tagSet('area,br,col,hr,img,wbr');
+//const VOID_ELEMENTS = tagSet('area,br,col,hr,img,wbr');
 // Elements that you can, intentionally, leave open (and which close themselves)
 // http://dev.w3.org/html5/spec/Overview.html#optional-tags
-const OPTIONAL_END_TAG_BLOCK_ELEMENTS = tagSet('colgroup,dd,dt,li,p,tbody,td,tfoot,th,thead,tr');
-const OPTIONAL_END_TAG_INLINE_ELEMENTS = tagSet('rp,rt');
-const OPTIONAL_END_TAG_ELEMENTS = merge(OPTIONAL_END_TAG_INLINE_ELEMENTS, OPTIONAL_END_TAG_BLOCK_ELEMENTS);
+//const OPTIONAL_END_TAG_BLOCK_ELEMENTS = tagSet('colgroup,dd,dt,li,p,tbody,td,tfoot,th,thead,tr');
+//const OPTIONAL_END_TAG_INLINE_ELEMENTS = tagSet('rp,rt');
+//const OPTIONAL_END_TAG_ELEMENTS = merge(OPTIONAL_END_TAG_INLINE_ELEMENTS, OPTIONAL_END_TAG_BLOCK_ELEMENTS);
 // Safe Block Elements - HTML5
-const BLOCK_ELEMENTS = merge(OPTIONAL_END_TAG_BLOCK_ELEMENTS, tagSet('address,article,' +
-    'aside,blockquote,caption,center,del,details,dialog,dir,div,dl,figure,figcaption,footer,h1,h2,h3,h4,h5,' +
-    'h6,header,hgroup,hr,ins,main,map,menu,nav,ol,pre,section,summary,table,ul'));
+// const BLOCK_ELEMENTS = merge(OPTIONAL_END_TAG_BLOCK_ELEMENTS, tagSet('address,article,' +
+//     'aside,blockquote,caption,center,del,details,dialog,dir,div,dl,figure,figcaption,footer,h1,h2,h3,h4,h5,' +
+//     'h6,header,hgroup,hr,ins,main,map,menu,nav,ol,pre,section,summary,table,ul'));
 // Inline Elements - HTML5
-const INLINE_ELEMENTS = merge(OPTIONAL_END_TAG_INLINE_ELEMENTS, tagSet('a,abbr,acronym,audio,b,' +
-    'bdi,bdo,big,br,cite,code,del,dfn,em,font,i,img,ins,kbd,label,map,mark,picture,q,ruby,rp,rt,s,' +
-    'samp,small,source,span,strike,strong,sub,sup,time,track,tt,u,var,video'));
-const VALID_ELEMENTS = merge(VOID_ELEMENTS, BLOCK_ELEMENTS, INLINE_ELEMENTS, OPTIONAL_END_TAG_ELEMENTS);
+//const INLINE_ELEMENTS = merge(OPTIONAL_END_TAG_INLINE_ELEMENTS, tagSet('a,abbr,acronym,audio,b,' +
+//    'bdi,bdo,big,br,cite,code,del,dfn,em,font,i,img,ins,kbd,label,map,mark,picture,q,ruby,rp,rt,s,' +
+//    'samp,small,source,span,strike,strong,sub,sup,time,track,tt,u,var,video'));
+//const VALID_ELEMENTS = merge(VOID_ELEMENTS, BLOCK_ELEMENTS, INLINE_ELEMENTS, OPTIONAL_END_TAG_ELEMENTS);
 // Attributes that have href and hence need to be sanitized
-const URI_ATTRS = tagSet('background,cite,href,itemtype,longdesc,poster,src,xlink:href');
+//const URI_ATTRS = tagSet('background,cite,href,itemtype,longdesc,poster,src,xlink:href');
 // Attributes that have special href set hence need to be sanitized
-const SRCSET_ATTRS = tagSet('srcset');
-const HTML_ATTRS = tagSet('abbr,accesskey,align,alt,autoplay,axis,bgcolor,border,cellpadding,cellspacing,class,clear,color,cols,colspan,' +
-    'compact,controls,coords,datetime,default,dir,download,face,headers,height,hidden,hreflang,hspace,' +
-    'ismap,itemscope,itemprop,kind,label,lang,language,loop,media,muted,nohref,nowrap,open,preload,rel,rev,role,rows,rowspan,rules,' +
-    'scope,scrolling,shape,size,sizes,span,srclang,start,summary,tabindex,target,title,translate,type,usemap,' +
-    'valign,value,vspace,width');
+//const SRCSET_ATTRS = tagSet('srcset');
+// const HTML_ATTRS = tagSet('abbr,accesskey,align,alt,autoplay,axis,bgcolor,border,cellpadding,cellspacing,class,clear,color,cols,colspan,' +
+//     'compact,controls,coords,datetime,default,dir,download,face,headers,height,hidden,hreflang,hspace,' +
+//     'ismap,itemscope,itemprop,kind,label,lang,language,loop,media,muted,nohref,nowrap,open,preload,rel,rev,role,rows,rowspan,rules,' +
+//     'scope,scrolling,shape,size,sizes,span,srclang,start,summary,tabindex,target,title,translate,type,usemap,' +
+//     'valign,value,vspace,width');
 // NB: This currently conciously doesn't support SVG. SVG sanitization has had several security
 // issues in the past, so it seems safer to leave it out if possible. If support for binding SVG via
 // innerHTML is required, SVG attributes should be added here.
 // NB: Sanitization does not allow <form> elements or other active elements (<button> etc). Those
 // can be sanitized, but they increase security surface area without a legitimate use case, so they
 // are left out here.
-const VALID_ATTRS = merge(URI_ATTRS, SRCSET_ATTRS, HTML_ATTRS);
+//const VALID_ATTRS = merge(SRCSET_ATTRS);
 /**
  * SanitizingHtmlSerializer serializes a DOM fragment, stripping out any unsafe elements and unsafe
  * attributes.
@@ -3493,23 +3493,23 @@ class SanitizingHtmlSerializer {
      */
     startElement(element) {
         const /** @type {?} */ tagName = DOM.nodeName(element).toLowerCase();
-        if (!VALID_ELEMENTS.hasOwnProperty(tagName)) {
-            this.sanitizedSomething = true;
-            return;
-        }
+        // if (!VALID_ELEMENTS.hasOwnProperty(tagName)) {
+        //     this.sanitizedSomething = true;
+        //     return;
+        // }
         this.buf.push('<');
         this.buf.push(tagName);
         DOM.attributeMap(element).forEach((value, attrName) => {
             const /** @type {?} */ lower = attrName.toLowerCase();
-            if (!VALID_ATTRS.hasOwnProperty(lower)) {
-                this.sanitizedSomething = true;
-                return;
-            }
+            // if (!VALID_ATTRS.hasOwnProperty(lower)) {
+            //     this.sanitizedSomething = true;
+            //     return;
+            // }
             // TODO(martinprobst): Special case image URIs for data:image/...
-            if (URI_ATTRS[lower])
-                value = sanitizeUrl(value);
-            if (SRCSET_ATTRS[lower])
-                value = sanitizeSrcset(value);
+            // if (URI_ATTRS[lower])
+            //     value = sanitizeUrl(value);
+            // if (SRCSET_ATTRS[lower])
+            //     value = sanitizeSrcset(value);
             this.buf.push(' ');
             this.buf.push(attrName);
             this.buf.push('="');
@@ -3614,7 +3614,7 @@ function sanitizeHtml(defaultDoc, unsafeHtmlInput) {
             DOM.setInnerHTML(containerEl, unsafeHtml);
             if (defaultDoc.documentMode) {
                 // strip custom-namespaced attributes on IE<=11
-                stripCustomNsAttrs(containerEl);
+                //stripCustomNsAttrs(containerEl);
             }
             parsedHtml = DOM.getInnerHTML(containerEl);
         } while (unsafeHtml !== parsedHtml);
@@ -3625,9 +3625,9 @@ function sanitizeHtml(defaultDoc, unsafeHtmlInput) {
         for (const /** @type {?} */ child of DOM.childNodesAsList(parent)) {
             DOM.removeChild(parent, child);
         }
-        if (isDevMode() && sanitizer.sanitizedSomething) {
-            DOM.log('WARNING: sanitizing HTML stripped some content (see http://g.co/ng/security#xss).');
-        }
+        // if (isDevMode() && sanitizer.sanitizedSomething) {
+        //     DOM.log('WARNING: sanitizing HTML stripped some content (see http://g.co/ng/security#xss).');
+        // }
         return safeHtml;
     }
     catch (e) {
@@ -3722,14 +3722,14 @@ function sanitizeStyle(value) {
         return '';
     // Single url(...) values are supported, but only for URLs that sanitize cleanly. See above for
     // reasoning behind this.
-    const /** @type {?} */ urlMatch = value.match(URL_RE);
-    if ((urlMatch && sanitizeUrl(urlMatch[1]) === urlMatch[1]) ||
-        value.match(SAFE_STYLE_VALUE) && hasBalancedQuotes(value)) {
-        return value; // Safe style values.
-    }
-    if (isDevMode()) {
-        getDOM().log(`WARNING: sanitizing unsafe style value ${value} (see http://g.co/ng/security#xss).`);
-    }
+    // const /** @type {?} */ urlMatch = value.match(URL_RE);
+    // if ((urlMatch && sanitizeUrl(urlMatch[1]) === urlMatch[1]) ||
+    //     value.match(SAFE_STYLE_VALUE) && hasBalancedQuotes(value)) {
+    //     return value; // Safe style values.
+    // }
+    // if (isDevMode()) {
+    //     getDOM().log(`WARNING: sanitizing unsafe style value ${value} (see http://g.co/ng/security#xss).`);
+    // }
     return 'unsafe';
 }
 
@@ -3855,42 +3855,41 @@ class DomSanitizerImpl extends DomSanitizer {
      * @return {?}
      */
     sanitize(ctx, value) {
-        if (value == null)
-            return null;
-        switch (ctx) {
-            case SecurityContext.NONE:
-                return value;
-            case SecurityContext.HTML:
-                if (value instanceof SafeHtmlImpl)
-                    return value.changingThisBreaksApplicationSecurity;
-                this.checkNotSafeValue(value, 'HTML');
-                return sanitizeHtml(this._doc, String(value));
-            case SecurityContext.STYLE:
-                if (value instanceof SafeStyleImpl)
-                    return value.changingThisBreaksApplicationSecurity;
-                this.checkNotSafeValue(value, 'Style');
-                return sanitizeStyle(value);
-            case SecurityContext.SCRIPT:
-                if (value instanceof SafeScriptImpl)
-                    return value.changingThisBreaksApplicationSecurity;
-                this.checkNotSafeValue(value, 'Script');
-                throw new Error('unsafe value used in a script context');
-            case SecurityContext.URL:
-                if (value instanceof SafeResourceUrlImpl || value instanceof SafeUrlImpl) {
-                    // Allow resource URLs in URL contexts, they are strictly more trusted.
-                    return value.changingThisBreaksApplicationSecurity;
-                }
-                this.checkNotSafeValue(value, 'URL');
-                return sanitizeUrl(String(value));
-            case SecurityContext.RESOURCE_URL:
-                if (value instanceof SafeResourceUrlImpl) {
-                    return value.changingThisBreaksApplicationSecurity;
-                }
-                this.checkNotSafeValue(value, 'ResourceURL');
-                throw new Error('unsafe value used in a resource URL context (see http://g.co/ng/security#xss)');
-            default:
-                throw new Error(`Unexpected SecurityContext ${ctx} (see http://g.co/ng/security#xss)`);
-        }
+        return value;
+        //switch (ctx) {
+            // case SecurityContext.NONE:
+            //     return value;
+            // case SecurityContext.HTML:
+            //     if (value instanceof SafeHtmlImpl)
+            //         return value.changingThisBreaksApplicationSecurity;
+            //     this.checkNotSafeValue(value, 'HTML');
+            //     return sanitizeHtml(this._doc, String(value));
+            // case SecurityContext.STYLE:
+            //     if (value instanceof SafeStyleImpl)
+            //         return value.changingThisBreaksApplicationSecurity;
+            //     this.checkNotSafeValue(value, 'Style');
+            //     return sanitizeStyle(value);
+            // case SecurityContext.SCRIPT:
+            //     if (value instanceof SafeScriptImpl)
+            //         return value.changingThisBreaksApplicationSecurity;
+            //     this.checkNotSafeValue(value, 'Script');
+            //     throw new Error('unsafe value used in a script context');
+            // case SecurityContext.URL:
+            //     if (value instanceof SafeResourceUrlImpl || value instanceof SafeUrlImpl) {
+            //         // Allow resource URLs in URL contexts, they are strictly more trusted.
+            //         return value.changingThisBreaksApplicationSecurity;
+            //     }
+            //     this.checkNotSafeValue(value, 'URL');
+            //     return sanitizeUrl(String(value));
+            // case SecurityContext.RESOURCE_URL:
+            //     if (value instanceof SafeResourceUrlImpl) {
+            //         return value.changingThisBreaksApplicationSecurity;
+            //     }
+            //     this.checkNotSafeValue(value, 'ResourceURL');
+            //     throw new Error('unsafe value used in a resource URL context (see http://g.co/ng/security#xss)');
+            // default:
+            //     throw new Error(`Unexpected SecurityContext ${ctx} (see http://g.co/ng/security#xss)`);
+        //}
     }
     /**
      * @param {?} value
@@ -4003,9 +4002,11 @@ class SafeResourceUrlImpl extends SafeValueImpl {
  * found in the LICENSE file at https://angular.io/license
  */
 const INTERNAL_BROWSER_PLATFORM_PROVIDERS = [
-    { provide: PLATFORM_ID, useValue: ɵPLATFORM_BROWSER_ID },
+    // TGH: Removal
+    //{ provide: PLATFORM_ID, useValue: ɵPLATFORM_BROWSER_ID },
     { provide: PLATFORM_INITIALIZER, useValue: initDomAdapter, multi: true },
-    { provide: PlatformLocation, useClass: BrowserPlatformLocation },
+    // TGH: Removal
+    //  { provide: PlatformLocation, useClass: BrowserPlatformLocation },
     { provide: DOCUMENT, useFactory: _document, deps: [] },
 ];
 /**
@@ -4027,13 +4028,13 @@ const platformBrowser = createPlatformFactory(platformCore, 'browser', INTERNAL_
  */
 function initDomAdapter() {
     BrowserDomAdapter.makeCurrent();
-    BrowserGetTestability.init();
+    //BrowserGetTestability.init();
 }
 /**
  * @return {?}
  */
 function errorHandler() {
-    return new ErrorHandler();
+    //return new ErrorHandler();
 }
 /**
  * @return {?}
@@ -4050,11 +4051,11 @@ class BrowserModule {
     /**
      * @param {?} parentModule
      */
-    constructor(parentModule) {
-        if (parentModule) {
-            throw new Error(`BrowserModule has already been loaded. If you need access to common directives such as NgIf and NgFor from a lazy loaded module, import CommonModule instead.`);
-        }
-    }
+    // constructor(parentModule) {
+    //     if (parentModule) {
+    //         throw new Error(`BrowserModule has already been loaded. If you need access to common directives such as NgIf and NgFor from a lazy loaded module, import CommonModule instead.`);
+    //     }
+    // }
     /**
      * Configures a browser-based application to transition from a server-rendered app, if
      * one is present on the page. The specified parameters must include an application id,
@@ -4083,25 +4084,25 @@ BrowserModule.decorators = [
                     { provide: EVENT_MANAGER_PLUGINS, useClass: DomEventsPlugin, multi: true },
                     { provide: EVENT_MANAGER_PLUGINS, useClass: KeyEventsPlugin, multi: true },
                     { provide: EVENT_MANAGER_PLUGINS, useClass: HammerGesturesPlugin, multi: true },
-                    { provide: HAMMER_GESTURE_CONFIG, useClass: HammerGestureConfig },
+                   // { provide: HAMMER_GESTURE_CONFIG, useClass: HammerGestureConfig },
                     DomRendererFactory2,
                     { provide: RendererFactory2, useExisting: DomRendererFactory2 },
                     { provide: SharedStylesHost, useExisting: DomSharedStylesHost },
                     DomSharedStylesHost,
                     Testability,
                     EventManager,
-                    ELEMENT_PROBE_PROVIDERS,
+                    //ELEMENT_PROBE_PROVIDERS,
                     Meta,
-                    Title,
+                    //Title,
                 ],
-                exports: [CommonModule, ApplicationModule]
+                exports: [/*CommonModule*/, ApplicationModule]
             },] },
 ];
 /**
  * @nocollapse
  */
 BrowserModule.ctorParameters = () => [
-    { type: BrowserModule, decorators: [{ type: Optional }, { type: SkipSelf },] },
+    { type: BrowserModule, decorators: [/*{ type: Optional }, { type: SkipSelf },*/] },
 ];
 
 /**
@@ -4328,5 +4329,5 @@ const VERSION = new Version('4.0.0');
  * Generated bundle index. Do not edit.
  */
 
-export { BrowserModule, platformBrowser, Meta, Title, disableDebugTools, enableDebugTools, By, NgProbeToken$1 as NgProbeToken, DOCUMENT, EVENT_MANAGER_PLUGINS, EventManager, HAMMER_GESTURE_CONFIG, HammerGestureConfig, DomSanitizer, VERSION, BROWSER_SANITIZATION_PROVIDERS as ɵBROWSER_SANITIZATION_PROVIDERS, INTERNAL_BROWSER_PLATFORM_PROVIDERS as ɵINTERNAL_BROWSER_PLATFORM_PROVIDERS, initDomAdapter as ɵinitDomAdapter, BrowserDomAdapter as ɵBrowserDomAdapter, setValueOnPath as ɵsetValueOnPath, BrowserPlatformLocation as ɵBrowserPlatformLocation, TRANSITION_ID as ɵTRANSITION_ID, BrowserGetTestability as ɵBrowserGetTestability, ELEMENT_PROBE_PROVIDERS as ɵELEMENT_PROBE_PROVIDERS, DomAdapter as ɵDomAdapter, getDOM as ɵgetDOM, setRootDomAdapter as ɵsetRootDomAdapter, DomRendererFactory2 as ɵDomRendererFactory2, NAMESPACE_URIS as ɵNAMESPACE_URIS, flattenStyles as ɵflattenStyles, shimContentAttribute as ɵshimContentAttribute, shimHostAttribute as ɵshimHostAttribute, DomEventsPlugin as ɵDomEventsPlugin, HammerGesturesPlugin as ɵHammerGesturesPlugin, KeyEventsPlugin as ɵKeyEventsPlugin, DomSharedStylesHost as ɵDomSharedStylesHost, SharedStylesHost as ɵSharedStylesHost, _document as ɵb, errorHandler as ɵa, GenericBrowserDomAdapter as ɵh, SERVER_TRANSITION_PROVIDERS as ɵg, bootstrapListenerFactory as ɵf, _createNgProbe as ɵc, EventManagerPlugin as ɵd, DomSanitizerImpl as ɵe };
+export { BrowserModule, platformBrowser, Meta, disableDebugTools, enableDebugTools, By, NgProbeToken$1 as NgProbeToken, DOCUMENT, EVENT_MANAGER_PLUGINS, EventManager, HammerGestureConfig, DomSanitizer, VERSION, BROWSER_SANITIZATION_PROVIDERS as ɵBROWSER_SANITIZATION_PROVIDERS, INTERNAL_BROWSER_PLATFORM_PROVIDERS as ɵINTERNAL_BROWSER_PLATFORM_PROVIDERS, initDomAdapter as ɵinitDomAdapter, BrowserDomAdapter as ɵBrowserDomAdapter, setValueOnPath as ɵsetValueOnPath, BrowserPlatformLocation as ɵBrowserPlatformLocation, TRANSITION_ID as ɵTRANSITION_ID, BrowserGetTestability as ɵBrowserGetTestability, DomAdapter as ɵDomAdapter, getDOM as ɵgetDOM, setRootDomAdapter as ɵsetRootDomAdapter, DomRendererFactory2 as ɵDomRendererFactory2, NAMESPACE_URIS as ɵNAMESPACE_URIS, flattenStyles as ɵflattenStyles, shimContentAttribute as ɵshimContentAttribute, shimHostAttribute as ɵshimHostAttribute, DomEventsPlugin as ɵDomEventsPlugin, HammerGesturesPlugin as ɵHammerGesturesPlugin, KeyEventsPlugin as ɵKeyEventsPlugin, DomSharedStylesHost as ɵDomSharedStylesHost, SharedStylesHost as ɵSharedStylesHost, _document as ɵb, errorHandler as ɵa, GenericBrowserDomAdapter as ɵh, SERVER_TRANSITION_PROVIDERS as ɵg, bootstrapListenerFactory as ɵf, _createNgProbe as ɵc, EventManagerPlugin as ɵd, DomSanitizerImpl as ɵe };
 //# sourceMappingURL=platform-browser.js.map
