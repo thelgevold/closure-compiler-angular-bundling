@@ -1,12 +1,25 @@
 
-import {Component, Injectable} from '@angular/core';
+import {Component} from '@angular/core';
+
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'basic',
   templateUrl: './basic.ng.html',
 })
-@Injectable()
 export class Basic {
   ctxProp: string;
-  constructor() { this.ctxProp = 'initial value'; }
+  subject = new Subject();
+  constructor() { }
+
+  ngOnInit() {
+
+    this.subject.asObservable().subscribe((res:string) => this.ctxProp = res);
+
+    this.subject.next('initial value');
+  }
+
+  emitNewValue() {
+    this.subject.next(new Date().getTime());
+  }
 }
