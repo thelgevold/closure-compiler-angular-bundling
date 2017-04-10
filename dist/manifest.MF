@@ -223,5 +223,4 @@ built/components/lazy-loaded-tree-view/tree-view.ngfactory.js
 built/components/lazy-loaded-tree-view/country-demo.ngfactory.js
 built/components/algorithms/graph/edge.ngfactory.js
 built/app.module.ngfactory.js
-built/rxjs.js
 built/main.js
