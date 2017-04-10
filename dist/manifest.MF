@@ -111,8 +111,6 @@ built/components/tree-view/tree-view-demo.js
 built/components/contact-list/contact.js
 built/components/contact-list/contact-list.js
 built/components/bound-textbox/bound-textbox.js
-built/components/grid/column.js
-built/components/grid/grid-demo.js
 built/components/non-bindable/non-bindable.js
 node_modules/@angular/http/@angular/http.js
 built/components/http/http.js
@@ -125,9 +123,6 @@ built/components/spreadsheet/spreadsheet.js
 built/components/algorithms/algorithms.js
 built/components/jquery-integration/jquery-integration.js
 built/components/input-controls/input-controls.js
-built/components/dependency-injection/address-book-service.js
-built/components/dependency-injection/address-book-title-service.js
-built/components/dependency-injection/address-book.js
 built/components/address-form/address-form.js
 built/components/algorithms/graph/edge-service.js
 built/components/algorithms/graph/edge.js
@@ -172,8 +167,6 @@ built/components/pub-sub/customer.js
 built/components/pub-sub/producer.js
 built/components/pub-sub/consumer.js
 built/components/input-output/input-output.js
-built/components/grid/sorter.js
-built/components/grid/grid.js
 built/components/change-detection/comment.js
 built/components/change-detection/base-comment.js
 built/components/change-detection/comment-section-1.js
@@ -194,12 +187,9 @@ built/components/pub-sub/producer.ngfactory.js
 built/components/pub-sub/consumer.ngfactory.js
 built/components/pub-sub/pub-sub.ngfactory.js
 built/components/text-editor/text-editor.ngfactory.js
-built/components/dependency-injection/address-book.ngfactory.js
 built/components/http/http.ngfactory.js
 built/components/tree-view/tree-view.ngfactory.js
 built/components/tree-view/tree-view-demo.ngfactory.js
-built/components/grid/grid.ngfactory.js
-built/components/grid/grid-demo.ngfactory.js
 built/components/input-controls/input-controls.ngfactory.js
 built/components/contact-list/contact-list.ngfactory.js
 built/components/bound-textbox/bound-textbox.ngfactory.js

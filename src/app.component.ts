@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 
 import {HashLocationStrategy, LocationStrategy, Location} from '@angular/common';
-import {AddressBookTitleService} from './components/dependency-injection/address-book-title-service';
 
 declare var System:any;
 

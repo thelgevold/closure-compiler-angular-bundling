@@ -7,7 +7,7 @@ import {FriendsService} from './friends-service';
 })
 export class CachingDemo{
   
-  display = {first:true, second:true};
+  display = {'first': true, 'second': true};
   
   constructor(private _friendsService:FriendsService){
   }
@@ -17,7 +17,7 @@ export class CachingDemo{
   }
   
   reset(){
-    this.display = {first:true, second:true};
+    this.display = {'first': true, 'second': true};
   }
   
   clearCache(){

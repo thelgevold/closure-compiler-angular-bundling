@@ -8,15 +8,12 @@ import {TreeViewDemo} from './components/tree-view/tree-view-demo';
 import {ContactList} from './components/contact-list/contact-list';
 import {BoundTextbox} from './components/bound-textbox/bound-textbox';
 import {Directory} from './components/tree-view/directory';
-import {GridDemo} from './components/grid/grid-demo';
-import {Column} from './components/grid/column';
 import {IgnoreBindings} from './components/non-bindable/non-bindable';
 import {HttpSample} from './components/http/http';
 import {Spreadsheet} from './components/spreadsheet/spreadsheet';
 import {Algorithms} from './components/algorithms/algorithms';
 import {JqueryIntegration} from './components/jquery-integration/jquery-integration';
 import {InputControls} from './components/input-controls/input-controls';
-import {AddressBook} from './components/dependency-injection/address-book';
 import {AddressForm} from './components/address-form/address-form';
 import {Graph} from './components/algorithms/graph/graph';
 import {PubSub} from './components/pub-sub/pub-sub';
@@ -48,10 +45,8 @@ const routes: Routes = [
       { path: 'graph', component:Graph},
       { path: 'pub-sub', component:PubSub},
       { path: 'text-editor', component:TextEditor},
-      { path: 'address', component:AddressBook},
       { path: 'http', component:HttpSample},
       { path: 'treeview', component:TreeViewDemo},
-      { path: 'grid', component:GridDemo},
       { path: 'input', component:InputControls},
       { path: 'contact', component:ContactList},
       { path: 'textbox', component:BoundTextbox},
