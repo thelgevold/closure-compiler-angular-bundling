@@ -61,8 +61,7 @@ import {Component} from '@angular/core';
                     <li *ngIf="csharp">C#</li>
                 </ul>
             </div>
-
-            <h4><a href="http://www.syntaxsuccess.com/viewarticle/input-controls-in-angular-2.0">Read more here</a></h4>`
+`
 })
 
 export class InputControls {
