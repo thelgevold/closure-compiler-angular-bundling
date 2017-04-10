@@ -7,6 +7,9 @@
     "@angular/compiler": "^4.0.1",
     "@angular/compiler-cli": "^4.0.1",
     "@angular/core": "^4.0.1",
+    "@angular/forms": "^4.0.1",
+    "@angular/http": "^4.0.1",
+    "@angular/router": "^4.0.1",
     "@angular/platform-browser": "^4.0.1",
     "@angular/platform-server": "^4.0.1",
     "@angular/tsc-wrapped": "^4.0.1",
@@ -20,9 +23,13 @@
   "scripts": {
     "build": "ngc && npm run closure",
     "closure": "java -jar closure-compiler/closure-compiler-1.0-SNAPSHOT.jar --flagfile closure.conf $(find node_modules/rxjs -name \\*.js) $(find built -name \\*.js)",
-
     "explore": "source-map-explorer dist/bundle.js dist/bundle.js.map"
   },
   "author": "Alex Eagle <alexeagle@google.com> (https://angular.io/)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.4",
+    "jquery": "^2.1.4",
+    "jquery-ui": "^1.12.1"
+  }
 }

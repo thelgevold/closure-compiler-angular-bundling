@@ -1,0 +1,28 @@
+import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
+
+@Injectable()
+export class FriendsService{
+  
+  _friends:Observable<any> = null;
+
+  constructor(private _http:Http){
+  }
+  
+  clearCache(){
+    this._friends = null;
+  }
+  
+  getFriends(){
+    if(!this._friends){
+      this._friends = this._http.get('./friends.json')
+                          .map((res:Response) => res.json())
+                          .map(res => res['friends'])
+                          .do(friends => console.log('fetched friends'))
+                          .publishReplay(1)
+                          .refCount();
+    }
+    return this._friends;
+  }
+}

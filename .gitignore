@@ -4,3 +4,6 @@ built
 **/*.ngsummary.json
 npm-debug.log
 dist/*_renaming_report
+src/**/*.js
+src/**/*.js.map
+src/**/*.metadata.json

@@ -1,0 +1,25 @@
+import {Component,Input} from '@angular/core';
+import {PubSubService} from './pub-sub-service';
+import {Customer} from './customer';
+
+@Component({
+    selector: 'producer',
+    templateUrl: './producer.html'
+})
+
+export class Producer {
+
+    @Input() firstName = '';
+    @Input() lastName = '';
+
+    constructor(private pubSubService:PubSubService){
+    }
+
+    createCustomer(){
+        let customer = new Customer();
+        customer.firstName = this.firstName;
+        customer.lastName = this.lastName;
+
+        this.pubSubService.Stream.emit(customer);
+    }
+}

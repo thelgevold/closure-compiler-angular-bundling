@@ -13,10 +13,8 @@
         "outDir": "built",
         "declaration": true
     },
-    "exclude": [
-        "vendor",
-        "node_modules",
-        "built",
-        "dist"
+    "files": [
+        "src/main.ts",
+        "src/app.module.ts"
     ]
 }
